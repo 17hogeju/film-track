@@ -1,16 +1,15 @@
-# filmtrack
+# FilmTrack
 
-Senior Design
+> [Documentation Directory](Documentation/documentation.md)
 
-## Getting Started
 
-This project is a starting point for a Flutter application.
+**FilmTrack** is a mobile application that helps you track what to watch next based off of your TV and Film interests and your budget.
 
-A few resources to get you started if this is your first Flutter project:
+**Key Features Include:**
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+- Ability to report on user's collective interest across streaming platforms to help make informed decisions about entertainment subscriptions.
+- Ability to add, remove, modify, and rank media in order to stay on top of entertainment. 
+- Ability to notify user about saved upcoming movies or tv show episodes/seasons.
+- Ability to explore new movies, shows, and platforms based on current interests and budget using a supervised machine learning algorithm (ranking system) and learning insights of users with similar interests.
+- Ability to rate shows and movies user has seen to keep a history of favorites.
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
