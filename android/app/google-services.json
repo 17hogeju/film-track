@@ -1,0 +1,83 @@
+{
+  "project_info": {
+    "project_number": "961139471812",
+    "firebase_url": "https://film-track-default-rtdb.firebaseio.com",
+    "project_id": "film-track",
+    "storage_bucket": "film-track.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961139471812:android:f3f9724c529af75112a091",
+        "android_client_info": {
+          "package_name": "com.example.filmtrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961139471812-anj43cths9kqpkg1b360qvqj46mf1s2g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCatSYHuALxdf-wnWrbehKFiA6qq_G6h-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961139471812-anj43cths9kqpkg1b360qvqj46mf1s2g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "961139471812-9lcmj6labs2pvnlo74a2moth7gdtrlja.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.filmtrack"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:961139471812:android:a1eedf9487472e5112a091",
+        "android_client_info": {
+          "package_name": "com.filmtrack"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "961139471812-anj43cths9kqpkg1b360qvqj46mf1s2g.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCatSYHuALxdf-wnWrbehKFiA6qq_G6h-0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "961139471812-anj43cths9kqpkg1b360qvqj46mf1s2g.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "961139471812-9lcmj6labs2pvnlo74a2moth7gdtrlja.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.filmtrack"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
