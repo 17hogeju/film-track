@@ -1,8 +1,8 @@
 # Task List
 
 ## Set-up
-- [x] Configure React-Native project (**Julia**)
-- [ ] Create and connect a FireBase backend (**Julia**)
+- [x] Configure Flutter Project (**Julia**)
+- [x] Create and connect a FireBase backend (**Julia**)
 
 ## Design
 - [ ] Design visual components (**Julia**)
@@ -10,13 +10,13 @@
 - [ ] Design database structure (**Julia**)
 
 ## UI Implementation
-- [ ] Implement signup screen (**Sidath**)
-  - [ ] Add navigation route for users who are not signed in (**Sidath**)
-- [ ] Implement sign in screen (**Sidath**)
-  - [ ] Add navigation route for users who are signed in (**Sidath**)
-- [ ] Implement user profile screen (**Jielun**)
-  - [ ] Add ability to delete account (**Jielun**)
-  - [ ] Add ability to edit user information (**Jielun**)
+- [x] Implement signup screen (**Sidath**)
+  - [x] Add navigation route for users who are not signed in (**Sidath**)
+- [x] Implement sign in screen (**Sidath**)
+  - [x] Add navigation route for users who are signed in (**Sidath**)
+- [ ] Implement user profile screen (**Sidath**)
+  - [ ] Add ability to delete account (**Sidath**)
+  - [ ] Add ability to edit user information (**Sidath**)
 - [ ] Implement home screen (**Jielun**)
   - [ ] Add search bar (**Jielun**)
   - [ ] Add search results (**Jielun**)
@@ -34,8 +34,8 @@
   - [ ] Add ability to display best combination of subscriptions (**Sidath**)
 
 ## Backend Implementation
-- [ ] Create table for users (**Julia**)
-- [ ] Create table for API data (**Julia**)
+- [x] Create table for users (**Julia**)
+- [x] Create table for API data (**Julia**)
 - [ ] Research which APIs can be connected and how (**Sidath**)
 - [ ] Connect APIs to API table (**Sidath**)
 - [ ] Develop algorithm to parse user input from search bar (**Jielun**)
