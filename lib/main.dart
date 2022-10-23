@@ -1,4 +1,3 @@
-
 import 'dart:async';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
@@ -13,8 +12,7 @@ import 'package:provider/provider.dart';
 import 'firebase_options.dart';
 
 import 'src/authentication.dart';
-// import 'src/widgets.dart';
-
+import 'src/widgets.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -32,7 +30,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final mfaAction = AuthStateChangeAction<MFARequired>(
-          (context, state) async {
+      (context, state) async {
         final nav = Navigator.of(context);
 
         await startMFAVerification(
@@ -85,7 +83,7 @@ class App extends StatelessWidget {
         }),
         '/forgot-password': ((context) {
           final arguments = ModalRoute.of(context)?.settings.arguments
-          as Map<String, dynamic>?;
+              as Map<String, dynamic>?;
 
           return ForgotPasswordScreen(
             email: arguments?['email'] as String,
@@ -116,6 +114,8 @@ class App extends StatelessWidget {
                     child: const Text('Re-check email verification status'),
                   ),
                 ),
+                BudgetInputField(),
+                SubscriptionsDropDown()
               ],
             ),
           );
@@ -124,8 +124,8 @@ class App extends StatelessWidget {
       title: 'Dashboard',
       theme: ThemeData(
         buttonTheme: Theme.of(context).buttonTheme.copyWith(
-          highlightColor: Colors.deepPurple,
-        ),
+              highlightColor: Colors.deepPurple,
+            ),
         primarySwatch: Colors.deepPurple,
         textTheme: GoogleFonts.robotoTextTheme(
           Theme.of(context).textTheme,
@@ -179,7 +179,6 @@ class ApplicationState extends ChangeNotifier {
   // UserDataDocument _userDataDocument = ;
   // List<UserDataDocument> get userDataDocuments => _userDataDocuments;
 
-
   Future<void> init() async {
     await Firebase.initializeApp(
         options: DefaultFirebaseOptions.currentPlatform);
@@ -192,39 +191,39 @@ class ApplicationState extends ChangeNotifier {
       if (user != null) {
         _loggedIn = true;
         _emailVerified = user.emailVerified;
-  //       _uid = user.uid;
-  //       _userDataSubscription = FirebaseFirestore.instance
-  //           .collection('userdata')
-  //           .where('uid', isEqualTo: _uid)
-  //           .snapshots()
-  //           .listen((snapshot) {
-  //         _userDataDocuments = [];
-  //         for (final document in snapshot.docs) {
-  //           _guestBookMessages.add(
-  //             GuestBookMessage(
-  //               name: document.data()['name'] as String,
-  //               message: document.data()['text'] as String,
-  //             ),
-  //           );
-  //         }
-  //         notifyListeners();
-  //       });
-  //       _attendingSubscription = FirebaseFirestore.instance
-  //           .collection('attendees')
-  //           .doc(user.uid)
-  //           .snapshots()
-  //           .listen((snapshot) {
-  //         if (snapshot.data() != null) {
-  //           if (snapshot.data()!['attending'] as bool) {
-  //             _attending = Attending.yes;
-  //           } else {
-  //             _attending = Attending.no;
-  //           }
-  //         } else {
-  //           _attending = Attending.unknown;
-  //         }
-  //         notifyListeners();
-  //       });
+        //       _uid = user.uid;
+        //       _userDataSubscription = FirebaseFirestore.instance
+        //           .collection('userdata')
+        //           .where('uid', isEqualTo: _uid)
+        //           .snapshots()
+        //           .listen((snapshot) {
+        //         _userDataDocuments = [];
+        //         for (final document in snapshot.docs) {
+        //           _guestBookMessages.add(
+        //             GuestBookMessage(
+        //               name: document.data()['name'] as String,
+        //               message: document.data()['text'] as String,
+        //             ),
+        //           );
+        //         }
+        //         notifyListeners();
+        //       });
+        //       _attendingSubscription = FirebaseFirestore.instance
+        //           .collection('attendees')
+        //           .doc(user.uid)
+        //           .snapshots()
+        //           .listen((snapshot) {
+        //         if (snapshot.data() != null) {
+        //           if (snapshot.data()!['attending'] as bool) {
+        //             _attending = Attending.yes;
+        //           } else {
+        //             _attending = Attending.no;
+        //           }
+        //         } else {
+        //           _attending = Attending.unknown;
+        //         }
+        //         notifyListeners();
+        //       });
       } else {
         _loggedIn = false;
         // _guestBookMessages = [];
