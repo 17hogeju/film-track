@@ -1,6 +1,6 @@
 # Project Description
 
-## Developer
+## Developers
 **FilmTrack** is a senior design project by University of Cincinnati seniors: [Julia Hoge](/Documentation/professional_bio.md), [Sidath Marapane](/Documentation/professional_bio_Sidath-Marapane.md), [Jielun Cui](/Documentation/professional_bio_Jielun-Cui.md)
 
 ## Faculty Advisor
