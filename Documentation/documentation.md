@@ -1,13 +1,28 @@
-# Documentation Directory
+# Table of Contents
 
-## Project Information
-
+## Project Description
 - [Project Description](/Documentation/project_description.md)
+## User Stories and Design Diagrams
 - [User Stories](/Documentation/user_stories.md)
-- [Task List](/Documentation/tasklist.md)
-- Design Diagrams: [D0](/Documentation/Design_Diagrams/FilmTrack_D0.jpg), [D1](/Documentation/Design_Diagrams/FilmTrack_D1.jpg), [D2](/Documentation/Design_Diagrams/FilmTrack_D2.jpg)
+- Design Diagrams:
+  - [D0](/Documentation/Design_Diagrams/FilmTrack_D0.jpg)
+  - [D1](/Documentation/Design_Diagrams/FilmTrack_D1.jpg)
+  - [D2](/Documentation/Design_Diagrams/FilmTrack_D2.jpg)
 
-## Team Information
+
+## Project Tasks and Timeline
+## PPT Slideshow
+## Self Assessment Essays
+## Professional Biographies
+## Budget
+## Appendix
+
+
+
+- [Task List](/Documentation/tasklist.md)
+
+
+
 
 ### Julia
 
