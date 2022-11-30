@@ -5,9 +5,9 @@
 - [x] Create and connect a FireBase backend (**Julia**)
 
 ## Design
-- [ ] Design visual components (**Julia**)
-- [ ] Design screen layouts (**Julia**)
-- [ ] Design database structure (**Julia**)
+- [x] Design visual components (**Julia**)
+- [x] Design screen layouts (**Julia**)
+- [x] Design database structure (**Julia**)
 
 ## UI Implementation
 - [x] Implement signup screen (**Sidath**)
@@ -36,10 +36,11 @@
 ## Backend Implementation
 - [x] Create table for users (**Julia**)
 - [x] Create table for API data (**Julia**)
-- [ ] Research which APIs can be connected and how (**Sidath**)
-- [ ] Connect APIs to API table (**Sidath**)
+- [x] Research which APIs can be connected and how (**Sidath**)
+- [ ] Populate firebase with media data (**Sidath**)
+- [ ] Populate firebase with user data (**Julia**)
 - [ ] Develop algorithm to parse user input from search bar (**Jielun**)
-- [ ] Research ML algorithms (**Julia**)
+- [x] Research ML algorithms (**Julia**)
 - [ ] Train ML algorithm to learn user’s interests (**Julia**)
 - [ ] Create recommendation engine with supervised machine learning (**Julia**)
 - [ ] Develop algorithm to determine best combination of subscriptions (**Julia**)
