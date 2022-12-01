@@ -17,7 +17,7 @@
 | Concepts | Parallel Computing, Cloud Computing |
 
 ## Areas of Interest
-- Algrithm
+- Algorithm
 - Artificial Intelligence
 
 ## Type of Project Sought
