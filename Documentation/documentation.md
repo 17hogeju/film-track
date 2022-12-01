@@ -28,7 +28,7 @@
 - [Jielun Cui](/Documentation/professional_bio_Jielun-Cui.md)
 
 ## Budget
-
+- [Budget](/Documentation/budget.md)
 
 ## Appendix
 
