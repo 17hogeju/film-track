@@ -14,7 +14,7 @@ No-cost Spark plan:
 
 
 
-We also use Flutter, an open source framework by Google for building natively compiled, multi-platform applications. 
+We also use Flutter, an open source framework by Google for building a natively compiled, multi-platform application. 
 
 To gather our media data, we are parsing a subset of IMDb data which is available for personal and non-commercial use.
 
