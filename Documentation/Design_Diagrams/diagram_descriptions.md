@@ -1,11 +1,14 @@
-# Diagram Descriptions
-
-## Level 0
+# Design Diagrams
 **Diagram Conventions:**
 - Arrows denote the direction of information flow
 - Rectangles denote algorithms
 - Left leaning parallelograms denote inputs
 - Right leaning parallelograms denote outputs
+- Ovals with points denote displays
+- Cylinders denote stored data
+
+## Level 0
+![](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D0.jpg)
 
 **Description:** In the level 0 diagram, the overall data flow is depicted in the form of inputs and outputs
 
@@ -16,11 +19,7 @@
 ---
 
 ## Level 1
-**Diagram Conventions:**
-- Arrows denote the direction of information flow
-- Rectangles denote algorithms
-- Left leaning parallelograms denote inputs
-- Ovals with points denote displays
+![](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D1.jpg)
 
 **Description:** In the level 1 diagram, the overall data flow is depicted in addition to major sections of the app
 
@@ -35,12 +34,8 @@
 ---
 
 ## Level 2
-**Diagram Conventions:**
-- Arrows denote the direction of information flow
-- Rectangles denote algorithms
-- Left leaning parallelograms denote inputs
-- Ovals with points denote displays
-- Cylinders denote stored data
+
+![](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D2.jpg)
 
 **Description:** In the level 2 diagram, the overall data flow, major sections of the app, and essential algorithm flow are depicted
 
@@ -53,5 +48,3 @@
 **Recommendation Section:** Based on the user's watched and to-watch lists, the ML algorithm uses similar user data to find and display recommended media that the user might be interested in. The user can add those recommendations to their to-watch list or add them to their watched list with a rating. The user can also give feedback on the quality of the recommendations.
 
 **Subscription Section:** Based on the user's watched and to-watch lists in addition to the user's current subscriptions, an algorithm determines which subscriptions the user should keep and which subscriptions a user might want to consider. This is displayed in a 'Best Combination of Subscriptions' screen.
-
----
