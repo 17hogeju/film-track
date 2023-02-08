@@ -13,6 +13,7 @@ import 'firebase_options.dart';
 
 import 'src/authentication.dart';
 import 'src/widgets.dart';
+import 'src/recommendations.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -119,7 +120,10 @@ class App extends StatelessWidget {
               ],
             ),
           );
-        })
+        }),
+        '/recommendations': ((context) {
+          return Recommendations();
+        }),
       },
       title: 'Dashboard',
       theme: ThemeData(
@@ -154,7 +158,7 @@ class HomePage extends StatelessWidget {
                 signOut: () {
                   FirebaseAuth.instance.signOut();
                 }),
-          ),
+          )
         ],
       ),
     );
