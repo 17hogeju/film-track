@@ -8,7 +8,7 @@ FilmTrack provides a simple system for keeping track of the shows/movies you hav
 
 In order to use the app, a user must have an account. Upon opening the app, a screen will prompt the user to sign in with a username and password. If the user has not created an account yet, they can follow the link on the sign-in page to register.
 
-![Sign In Screen](https://github.com/17hogeju/film-track/blob/main/Documentation/images/sign_in.png | height=150)
+<img src="https://github.com/17hogeju/film-track/blob/main/Documentation/images/sign_in.png" height="150">
 
 To register an account, a user must input a valid email and a password. After registration, the user will have to sign in with their given credentials to get to the home screen.
 
