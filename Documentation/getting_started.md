@@ -17,7 +17,7 @@ To register an account, a user must input a valid email and a password. After re
 From the home screen, the user can search for movies/shows, and navigate to their settings, watched list, and to watch list.
 The home button on the bottom navigation menu will always navigate back to this screen.
 
-<img src="https://github.com/17hogeju/film-track/tree/blob/Documentation/images/home.png" height="450">
+<img src="https://github.com/17hogeju/film-track/blob/main/Documentation/images/home.png" height="450">
 
 When the user types a media title in the search bar, they can add the desired result to their watched (star icon) or to-watch (pin icon) list. In order to add a title to the watched list, users must give the title a rating (out of five).
 
