@@ -51,13 +51,16 @@ The subscription screen can be accessed through the subscriptions button on the 
 ## FAQ
 
 **How many movies and tv shows are available on this app?**
+
 FilmTrack uses the most popular 5000 movie and 5000 tv show titles. More titles are pulled monthly to keep up with new films/shows.
 Titles are also updated monthly for changes in platforms availability.
 
 **What if I can't find a title?**
+
 Make sure you enter the movie/show title exactly as it is known for. If this is done and the title still does not appear in the search results, make a request to hogejr@mail.uc.edu to make the title available on FilmTrack.
 
 **Do disliked recommendations influence the new recommendations?**
+
 Yes, disliked titles will affect your suggested movies and tv shows. However, disliked recommendations do not count towards the 5 movie/ 5 show threshold that will update your current recommendations.
 
 
