@@ -24,7 +24,8 @@ class AuthFunc extends StatelessWidget {
                     ? Navigator.of(context).pushNamed('/sign-in')
                     : signOut();
               },
-              child: !loggedIn ? const Text('Go To Login') : const Text('Logout')),
+              child:
+                  !loggedIn ? const Text('Go To Login') : const Text('Logout')),
         ),
         Visibility(
             visible: loggedIn,
@@ -35,6 +36,16 @@ class AuthFunc extends StatelessWidget {
                     Navigator.of(context).pushNamed('/profile');
                   },
                   child: const Text('Profile')),
+            )),
+        Visibility(
+            visible: loggedIn,
+            child: Padding(
+              padding: const EdgeInsets.only(left: 24, bottom: 8),
+              child: StyledButton(
+                  onPressed: () {
+                    Navigator.of(context).pushNamed('/recommendations');
+                  },
+                  child: const Text('Recommendations')),
             ))
       ],
     );
