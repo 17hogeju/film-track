@@ -1,6 +1,7 @@
 import 'dart:async';
 
 // import 'package:cloud_firestore/cloud_firestore.dart';
+
 import 'package:firebase_auth/firebase_auth.dart'
     hide EmailAuthProvider, PhoneAuthProvider;
 import 'package:firebase_core/firebase_core.dart';
@@ -14,6 +15,9 @@ import 'firebase_options.dart';
 import 'src/authentication.dart';
 import 'src/widgets.dart';
 import 'src/recommendations.dart';
+import 'src/to-watch-list.dart';
+import 'src/watched-list.dart';
+import 'src/settings.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -124,6 +128,15 @@ class App extends StatelessWidget {
         '/recommendations': ((context) {
           return Recommendations();
         }),
+        '/to-watch-list': ((context) {
+          return const ToWatchList();
+        }),
+        '/watched-list': ((context) {
+          return const WatchedList();
+        }),
+        '/settings': ((context) {
+          return const Settings();
+        })
       },
       title: 'Dashboard',
       theme: ThemeData(
@@ -150,6 +163,7 @@ class HomePage extends StatelessWidget {
         title: const Text('Dashboard'),
       ),
       body: ListView(
+        padding: const EdgeInsets.fromLTRB(16, 0, 16, 0),
         children: <Widget>[
           const SizedBox(height: 8),
           Consumer<ApplicationState>(

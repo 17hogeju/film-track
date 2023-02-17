@@ -114,3 +114,46 @@ class SubscriptionsDropDown extends StatelessWidget {
         ),
       );
 }
+
+// ignore: must_be_immutable
+class LongButtons extends StatelessWidget {
+  final Color textColor;
+  final Color backgroundColor;
+  final String text;
+  final IconData icon;
+  final void Function() onPressed;
+
+  const LongButtons({Key? key,
+    required this.textColor,
+    required this.backgroundColor,
+    required this.text,
+    required this.icon,
+    required this.onPressed}): super(key:key);
+
+
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: onPressed,
+      style: ElevatedButton.styleFrom(
+        backgroundColor: backgroundColor,
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.start,
+        children: [
+          Icon(
+              icon,
+              color: textColor,
+          ),
+          const SizedBox(width: 10),
+          Text(
+            text,
+            style: TextStyle(
+              color: textColor,
+            ),
+          )
+        ]
+      ),
+    );
+  }
+}
