@@ -229,6 +229,7 @@ class CarouselAndCardState extends State<CarouselAndCard> {
   late PageController pageController;
   late List<Image> images = [];
   int activePage = 0;
+  String activeMediaType = "movies";
 
   @override
   void initState() {
@@ -240,45 +241,98 @@ class CarouselAndCardState extends State<CarouselAndCard> {
     // get list of media IDs to recommend
   }
 
+  Widget mediaButton(String mediaType, bool isFirst) {
+    return Align(
+        child: SizedBox(
+            width: 75,
+            height: 27,
+            child: TextButton(
+              onPressed: () {
+                setState(() {
+                  activePage = 0;
+                  activeMediaType = mediaType;
+                });
+              },
+              style: TextButton.styleFrom(
+                  side: BorderSide(
+                      width: 1.0,
+                      color: activeMediaType == mediaType
+                          ? const Color.fromRGBO(120, 132, 248, 1)
+                          : const Color.fromRGBO(100, 100, 100, 1)),
+                  foregroundColor: activeMediaType == mediaType
+                      ? const Color.fromRGBO(120, 132, 248, 1)
+                      : const Color.fromRGBO(100, 100, 100, 1),
+                  backgroundColor: activeMediaType == mediaType
+                      ? const Color.fromRGBO(217, 221, 255, 1)
+                      : const Color.fromRGBO(217, 217, 217, 1),
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.only(
+                          topLeft:
+                              isFirst ? const Radius.circular(30) : Radius.zero,
+                          bottomLeft:
+                              isFirst ? const Radius.circular(30) : Radius.zero,
+                          topRight:
+                              isFirst ? Radius.zero : const Radius.circular(30),
+                          bottomRight: isFirst
+                              ? Radius.zero
+                              : const Radius.circular(30)))),
+              child: Text(mediaType,
+                  style: const TextStyle(
+                      fontSize: 12, fontWeight: FontWeight.w700)),
+            )));
+  }
+
   @override
   Widget build(BuildContext context) {
-    return ListView(children: [
-      SizedBox(
-          height: 440,
-          child: Column(
+    return Padding(
+        padding: const EdgeInsets.only(top: 15),
+        child: ListView(children: [
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              SizedBox(
-                  width: MediaQuery.of(context).size.width,
-                  height: 400,
-                  child: PageView.builder(
-                      itemCount: images.length,
-                      pageSnapping: true,
-                      controller: pageController,
-                      onPageChanged: (page) {
-                        setState(() {
-                          activePage = page;
-                        });
-                      },
-                      itemBuilder: (context, pagePosition) {
-                        return Container(
-                            margin: const EdgeInsets.all(30),
-                            alignment: Alignment.topCenter,
-                            child: images[pagePosition]);
-                      })),
-              Row(
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: indicators(images.length, activePage))
+              mediaButton("Movies", true),
+              mediaButton("Shows", false)
             ],
-          )),
-      Container(
-        height: 400,
-        padding: const EdgeInsets.only(left: 10, right: 10),
-        child: RecommendationsContainer(
-            title: widget.mediaList[activePage]["title"],
-            genres: widget.mediaList[activePage]["genres"],
-            description: widget.mediaList[activePage]["overview"]),
-      )
-    ]);
+          ),
+          const Padding(
+            padding: EdgeInsets.only(bottom: 22),
+          ),
+          SizedBox(
+              height: 440,
+              child: Column(
+                children: [
+                  SizedBox(
+                      width: MediaQuery.of(context).size.width,
+                      height: 400,
+                      child: PageView.builder(
+                          itemCount: images.length,
+                          pageSnapping: true,
+                          controller: pageController,
+                          onPageChanged: (page) {
+                            setState(() {
+                              activePage = page;
+                            });
+                          },
+                          itemBuilder: (context, pagePosition) {
+                            return Container(
+                                margin: const EdgeInsets.all(30),
+                                alignment: Alignment.topCenter,
+                                child: images[pagePosition]);
+                          })),
+                  Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: indicators(images.length, activePage))
+                ],
+              )),
+          Container(
+            height: 400,
+            padding: const EdgeInsets.only(left: 10, right: 10),
+            child: RecommendationsContainer(
+                title: widget.mediaList[activePage]["title"],
+                genres: widget.mediaList[activePage]["genres"],
+                description: widget.mediaList[activePage]["overview"]),
+          )
+        ]));
   }
 }
 
