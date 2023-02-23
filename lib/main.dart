@@ -18,6 +18,7 @@ import 'src/recommendations.dart';
 import 'src/to-watch-list.dart';
 import 'src/watched-list.dart';
 import 'src/settings.dart';
+import 'src/home.dart';
 
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
@@ -136,6 +137,9 @@ class App extends StatelessWidget {
         }),
         '/settings': ((context) {
           return const Settings();
+        }),
+        '/home-temp': ((context) {
+          return const HomePageTemp();
         })
       },
       title: 'Dashboard',

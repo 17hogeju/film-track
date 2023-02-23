@@ -41,10 +41,10 @@ class AuthFunc extends StatelessWidget {
           visible: loggedIn,
           child: LongButtons(textColor: Colors.black,
             backgroundColor: Colors.white,
-            text: "To Watch List",
+            text: "Home",
             icon: Icons.push_pin_rounded,
             onPressed: () {
-              Navigator.of(context).pushNamed('/to-watch-list');
+              Navigator.of(context).pushNamed('/home-temp');
             },
           ),
         ),
