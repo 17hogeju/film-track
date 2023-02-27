@@ -34,8 +34,6 @@ migrate_working_dir/
 **/ios/
 pubspec.lock
 packages/
-ios/
-android/
 
 # Symbolication related
 app.*.symbols

@@ -17,7 +17,6 @@ class LoginHeaderWidget extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.stretch,
       children: [
-        /*  --  Image and Text Section --  */
         Image(
           image: const AssetImage(tLogoImage),
           color: tPrimaryColor,
@@ -29,6 +28,26 @@ class LoginHeaderWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.headlineSmall,
             textAlign: TextAlign.center
         ),
+        Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            TextButton(
+                onPressed: (){},
+                child: Text.rich(
+                  TextSpan(
+                    text: tNoAccount,
+                    style: Theme.of(context).textTheme.bodyMedium,
+                    children: const [
+                      TextSpan(
+                        text: tRegister,
+                        style: TextStyle(color: tPrimaryColor)
+                      )
+                    ]
+                  )
+                )
+            )
+          ],
+        )
       ],
     );
   }
