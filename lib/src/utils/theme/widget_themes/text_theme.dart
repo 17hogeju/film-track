@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class TTextTheme {
+  TTextTheme._();
 
   static TextTheme lightTextTheme = const TextTheme(
     headlineLarge: TextStyle(color: Colors.black87),
     headlineMedium: TextStyle(color: Colors.black87),
-    headlineSmall: TextStyle(color: Colors.black87),
+    headlineSmall:
+        TextStyle(color: Colors.black87, fontWeight: FontWeight.bold),
     titleLarge: TextStyle(color: Colors.black87),
     titleMedium: TextStyle(color: Colors.black87),
     titleSmall: TextStyle(color: Colors.black87),
@@ -31,5 +33,4 @@ class TTextTheme {
     labelMedium: TextStyle(color: Colors.white),
     labelSmall: TextStyle(color: Colors.white),
   );
-
 }

@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 
 class TColorSwatchTheme {
+  TColorSwatchTheme._();
+
   static MaterialColor lightColorTheme =
       const MaterialColor(0xFF7884F8, <int, Color>{
     50: Color(0x1A7884F8),
