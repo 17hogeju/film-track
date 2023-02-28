@@ -32,6 +32,7 @@ dependencies:
   flutter:
     sdk: flutter
   get: ^4.6.5
+  flutter_otp_text_field: ^1.1.1
 
 
   # The following adds the Cupertino Icons font to your application.

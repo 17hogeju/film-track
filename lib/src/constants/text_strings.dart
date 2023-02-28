@@ -18,3 +18,20 @@ const String tRegister = "Register";
 const String tForgotPasswordTitle = "Forgot Password?";
 const String tForgotPasswordSubTitle = "Reset password via E-mail verification";
 const String tNext = "Next";
+
+// -- OTP Screen Text
+const String tOtpTitle = "CO\nDE";
+const String tOtpSubtitle = "Verification";
+const String tOtpMessage = "Enter the verification code sent at ";
+
+// -- Home Screen Text
+const String tHomeWelcome = "Welcome!";
+const String tToWatchList = "To Watch List";
+const String tWatchedList = "Watched List";
+const String tSettings = "Settings";
+
+// -- Navigation Text
+const String tHome = "Home";
+const String tRecommendations = "Recommendations";
+const String tSubscriptions = "Subscriptions";
+

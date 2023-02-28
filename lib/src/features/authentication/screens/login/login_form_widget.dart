@@ -1,3 +1,4 @@
+import 'package:filmtrack/src/common_widgets/navigation/authenticated_navigation_widget.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/authentication/screens/forgot_password/forgot_password_screen.dart';
@@ -49,7 +50,9 @@ class LoginForm extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: (){},
+                        onPressed: (){
+                          Get.to(() => const AuthenticatedNavigationWidget());
+                        },
                         child: Text(tLogin.toUpperCase())
                     )
                 )

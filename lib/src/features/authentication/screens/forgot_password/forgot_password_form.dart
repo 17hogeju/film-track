@@ -1,6 +1,8 @@
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
+import 'package:filmtrack/src/features/authentication/screens/forgot_password/forgot_password_otp/forgot_password_otp_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 class ForgotPasswordForm extends StatelessWidget {
   const ForgotPasswordForm({
@@ -22,7 +24,9 @@ class ForgotPasswordForm extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: (){},
+                    onPressed: (){
+                      Get.to(() => const ForgotPasswordOtpScreen());
+                    },
                     child: Text(tNext.toUpperCase())
                 )
             )
