@@ -1,6 +1,6 @@
 import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
-import 'package:filmtrack/src/features/core/screens/dashboard/dashboard.dart';
+import 'package:filmtrack/src/features/core/screens/dashboard/dashboard_screen.dart';
 import 'package:filmtrack/src/features/core/screens/recommendations/recommendations_screen.dart';
 import 'package:filmtrack/src/features/core/screens/subscriptions/subscriptions_screen.dart';
 import 'package:flutter/material.dart';
