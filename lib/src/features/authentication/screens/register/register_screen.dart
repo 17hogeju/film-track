@@ -1,10 +1,12 @@
+
+
 import 'package:filmtrack/src/constants/sizes.dart';
-import 'package:filmtrack/src/features/authentication/screens/login/login_form_widget.dart';
-import 'package:filmtrack/src/features/authentication/screens/login/login_header_widget.dart';
+import 'package:filmtrack/src/features/authentication/screens/register/register_form_widget.dart';
+import 'package:filmtrack/src/features/authentication/screens/register/register_header_widget.dart';
 import 'package:flutter/material.dart';
 
-class LoginScreen extends StatelessWidget {
-  const LoginScreen({Key? key}) : super(key: key);
+class RegisterScreen extends StatelessWidget {
+  const RegisterScreen({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -19,11 +21,12 @@ class LoginScreen extends StatelessWidget {
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.stretch,
               children: [
-                LoginHeaderWidget(height: height),
-                const LoginForm(),
+                RegisterHeaderWidget(height: height),
+                const RegisterFormWidget()
               ],
-            ),
+            )
           ),
+
         ),
       )
     );

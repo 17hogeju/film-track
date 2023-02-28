@@ -1,11 +1,9 @@
-import 'package:filmtrack/src/constants/colors.dart';
-import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class TTextFormFieldTheme {
   TTextFormFieldTheme._();
 
-  static TextFormField lightTextFormField(icon, labelText, isPassword) {
+  static TextFormField myTextFormField(icon, labelText, isPassword) {
     return TextFormField(
       decoration: InputDecoration(
         prefixIcon: Icon(icon),

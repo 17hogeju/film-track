@@ -2,6 +2,7 @@ import 'package:filmtrack/src/constants/image_strings.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/authentication/screens/login/login_screen.dart';
+import 'package:filmtrack/src/features/authentication/screens/register/register_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -46,7 +47,7 @@ class WelcomeScreen extends StatelessWidget {
                       const SizedBox(width: tDefaultPaddingWidth),
                       Expanded(
                         child: ElevatedButton(
-                            onPressed: () {},
+                            onPressed: () => Get.to(() => const RegisterScreen()),
                             child: Text(tRegister.toUpperCase())),
                       )
                     ],

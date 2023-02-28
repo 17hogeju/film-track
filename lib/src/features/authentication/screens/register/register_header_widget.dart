@@ -3,12 +3,12 @@ import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/image_strings.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
-import 'package:filmtrack/src/features/authentication/screens/register/register_screen.dart';
+import 'package:filmtrack/src/features/authentication/screens/login/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginHeaderWidget extends StatelessWidget {
-  const LoginHeaderWidget({
+class RegisterHeaderWidget extends StatelessWidget {
+  const RegisterHeaderWidget({
     super.key,
     required this.height,
   });
@@ -19,23 +19,23 @@ class LoginHeaderWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        const FormHeaderWidget(image: tLogoImage, title: tLoginTitle, hasSubtitle: false),
+        const FormHeaderWidget(image: tLogoImage, title: tRegisterTitle, hasSubtitle: false),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             TextButton(
-                onPressed: () => Get.to(() => const RegisterScreen()),
+                onPressed: () => Get.to(() => const LoginScreen()),
                 child: Text.rich(
-                  TextSpan(
-                    text: tNoAccount,
-                    style: Theme.of(context).textTheme.bodyMedium,
-                    children: const [
-                      TextSpan(
-                        text: tRegister,
-                        style: TextStyle(color: tPrimaryColor)
-                      )
-                    ]
-                  )
+                    TextSpan(
+                        text: tYesAccount,
+                        style: Theme.of(context).textTheme.bodyMedium,
+                        children: const [
+                          TextSpan(
+                              text: tLogin,
+                              style: TextStyle(color: tPrimaryColor)
+                          )
+                        ]
+                    )
                 )
             )
           ],

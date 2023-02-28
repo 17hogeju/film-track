@@ -1,4 +1,4 @@
-import 'package:filmtrack/src/features/authentication/screens/welcome/welcome.dart';
+import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:filmtrack/src/utils/theme/theme.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -18,6 +18,9 @@ class App extends StatelessWidget {
       theme: TAppTheme.lightTheme,
       darkTheme: TAppTheme.darkTheme,
       themeMode: ThemeMode.system,
+      debugShowCheckedModeBanner: false,
+      defaultTransition: Transition.rightToLeftWithFade,
+      transitionDuration: const Duration(milliseconds: 500),
       home: const WelcomeScreen(),
     );
   }

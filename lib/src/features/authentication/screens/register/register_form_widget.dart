@@ -1,13 +1,9 @@
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
-import 'package:filmtrack/src/features/authentication/screens/forgot_password/forgot_password_screen.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
-class LoginForm extends StatelessWidget {
-  const LoginForm({
-    super.key,
-  });
+class RegisterFormWidget extends StatelessWidget {
+  const RegisterFormWidget({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -26,31 +22,25 @@ class LoginForm extends StatelessWidget {
                 const SizedBox(height: tFormHeight),
                 TextFormField(
                   decoration: const InputDecoration(
-                      label: Text(tPassword),
-                      prefixIcon: Icon(Icons.lock_rounded),
-                      suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.remove_red_eye_rounded)),
+                    label: Text(tPassword),
+                    prefixIcon: Icon(Icons.lock_rounded),
+                    suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.remove_red_eye_rounded)),
                   ),
                 ),
                 const SizedBox(height: tFormHeight),
-
-                // -- Forgot password button
-                Align(
-                  alignment: Alignment.centerRight,
-                  child: TextButton(
-                      onPressed: (){
-                        Get.to(() => const ForgotPasswordScreen());
-                      },
-                      child: const Text(tForgotPassword)
+                TextFormField(
+                  decoration: const InputDecoration(
+                    label: Text(tConfirmPassword),
+                    prefixIcon: Icon(Icons.lock_rounded),
+                    suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.remove_red_eye_rounded)),
                   ),
                 ),
                 const SizedBox(height: tFormHeight),
-
-                // -- Login button
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
                         onPressed: (){},
-                        child: Text(tLogin.toUpperCase())
+                        child: Text(tRegister.toUpperCase())
                     )
                 )
               ],
