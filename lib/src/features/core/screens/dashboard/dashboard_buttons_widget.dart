@@ -1,3 +1,4 @@
+import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/core/screens/settings/settings_screen.dart';
@@ -13,31 +14,35 @@ class DashboardButtonsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.center,
-      mainAxisAlignment: MainAxisAlignment.center,
-      children: [
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-              onPressed: () => Get.to(() => const ToWatchListScreen()),
-              child: const Text(tToWatchList)),
-        ),
-        const SizedBox(height: tDefaultSize * 2),
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-              onPressed: () => Get.to(() => const WatchedListScreen()),
-              child: const Text(tWatchedList)),
-        ),
-        const SizedBox(height: tDefaultSize * 2),
-        SizedBox(
-          width: double.infinity,
-          child: ElevatedButton(
-              onPressed: () => Get.to(() => const SettingsScreen()),
-              child: const Text(tSettings)),
-        ),
-      ],
+    return Container(
+      padding: const EdgeInsets.all(tDefaultSizeDouble),
+      decoration: const BoxDecoration(color: tCardBgColor),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+                onPressed: () => Get.to(() => const ToWatchListScreen()),
+                child: const Text(tToWatchList)),
+          ),
+          const SizedBox(height: tDefaultSize * 2),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+                onPressed: () => Get.to(() => const WatchedListScreen()),
+                child: const Text(tWatchedList)),
+          ),
+          const SizedBox(height: tDefaultSize * 2),
+          SizedBox(
+            width: double.infinity,
+            child: ElevatedButton(
+                onPressed: () => Get.to(() => const SettingsScreen()),
+                child: const Text(tSettings)),
+          ),
+        ],
+      ),
     );
   }
 }
