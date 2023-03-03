@@ -1,3 +1,4 @@
+import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:flutter/material.dart';
 
 class SubscriptionsScreen extends StatelessWidget {
@@ -5,8 +6,10 @@ class SubscriptionsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Container(),
+    return Column(
+      children: [
+        const SizedBox(height: tDefaultSize * 2),
+      ],
     );
   }
 }

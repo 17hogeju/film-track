@@ -1,4 +1,5 @@
 import 'package:filmtrack/src/constants/colors.dart';
+import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/core/screens/dashboard/dashboard_screen.dart';
 import 'package:filmtrack/src/features/core/screens/recommendations/recommendations_screen.dart';
@@ -25,30 +26,40 @@ class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationW
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        automaticallyImplyLeading: false,
-        title:  Text(_navigationOptions.elementAt(_selectedIndex))
-      ),
-      body: _navigationScreens.elementAt(_selectedIndex),
-      bottomNavigationBar: BottomNavigationBar(
-        items: const <BottomNavigationBarItem>[
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: tHome,
+    return WillPopScope(
+      onWillPop: () async => false,
+      child: SafeArea(
+        child: Scaffold(
+          appBar: AppBar(
+            automaticallyImplyLeading: false,
+            title:  Text(_navigationOptions.elementAt(_selectedIndex))
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.lightbulb_rounded),
-            label: tRecommendations,
+          body: Container(
+                // color: Colors.red,
+                padding: const EdgeInsets.all(tDefaultSize),
+                decoration: const BoxDecoration(color: tCardBgColor),
+                child: _navigationScreens.elementAt(_selectedIndex),
+              ),
+          bottomNavigationBar: BottomNavigationBar(
+            items: const <BottomNavigationBarItem>[
+              BottomNavigationBarItem(
+                icon: Icon(Icons.home),
+                label: tHome,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.lightbulb_rounded),
+                label: tRecommendations,
+              ),
+              BottomNavigationBarItem(
+                icon: Icon(Icons.attach_money_rounded),
+                label: tSubscriptions,
+              ),
+            ],
+            currentIndex: _selectedIndex,
+            selectedItemColor: tPrimaryColor,
+            onTap: _onItemTapped,
           ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.attach_money_rounded),
-            label: tSubscriptions,
-          ),
-        ],
-        currentIndex: _selectedIndex,
-        selectedItemColor: tPrimaryColor,
-        onTap: _onItemTapped,
+        ),
       ),
     );
   }

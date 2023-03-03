@@ -35,3 +35,10 @@ const String tHome = "Home";
 const String tRecommendations = "Recommendations";
 const String tSubscriptions = "Subscriptions";
 
+// -- Settings Text
+const String tUpdateEmail = "Update Email";
+const String tChangePassword = "Change Password";
+const String tLogout = "Logout";
+const String tDeleteAccount = "DeleteAccount";
+
+

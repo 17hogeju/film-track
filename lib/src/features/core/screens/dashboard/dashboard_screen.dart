@@ -1,6 +1,11 @@
+import 'package:filmtrack/src/common_widgets/media_toggle.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
-import 'package:filmtrack/src/features/core/screens/dashboard/dashboard_buttons_widget.dart';
+import 'package:filmtrack/src/constants/text_strings.dart';
+import 'package:filmtrack/src/features/core/screens/settings/settings_screen.dart';
+import 'package:filmtrack/src/features/core/screens/to_watch_list/to_watch_list_screen.dart';
+import 'package:filmtrack/src/features/core/screens/watched_list/watched_list_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
 
 class DashboardScreen extends StatelessWidget {
@@ -8,7 +13,34 @@ class DashboardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const DashboardButtonsWidget();
+    return Column(
+      // crossAxisAlignment: CrossAxisAlignment.stretch,
+      // mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+              onPressed: () => Get.to(() => const ToWatchListScreen()),
+              child: const Text(tToWatchList)),
+        ),
+        const SizedBox(height: tDefaultSize * 2),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+              onPressed: () => Get.to(() => const WatchedListScreen()),
+              child: const Text(tWatchedList)),
+        ),
+        const SizedBox(height: tDefaultSize * 2),
+        SizedBox(
+          width: double.infinity,
+          child: ElevatedButton(
+              onPressed: () => Get.to(() => const SettingsScreen()),
+              child: const Text(tSettings)),
+        ),
+        const SizedBox(height: tDefaultSize * 2),
+        const MediaToggle()
+      ],
+    );
   }
 }
 
