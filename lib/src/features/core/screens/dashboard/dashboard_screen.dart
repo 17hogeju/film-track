@@ -1,4 +1,3 @@
-import 'package:filmtrack/src/common_widgets/media_toggle.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/core/screens/settings/settings_screen.dart';
@@ -38,7 +37,6 @@ class DashboardScreen extends StatelessWidget {
               child: const Text(tSettings)),
         ),
         const SizedBox(height: tDefaultSize * 2),
-        const MediaToggle()
       ],
     );
   }
