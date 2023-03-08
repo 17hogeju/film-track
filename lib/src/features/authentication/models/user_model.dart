@@ -2,8 +2,10 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
   final List<dynamic> disliked;
-  final List<dynamic> pastRecs;
-  final List<dynamic> currRecs;
+  final List<dynamic> pastMovieRecs;
+  final List<dynamic> pastShowRecs;
+  final List<dynamic> currMovieRecs;
+  final List<dynamic> currShowRecs;
   final List<dynamic> toWatchMovies;
   final List<dynamic> toWatchShows;
   final List<dynamic> watchedMovies;
@@ -11,8 +13,10 @@ class UserModel {
 
   const UserModel({
     this.disliked = const [],
-    this.currRecs = const [],
-    this.pastRecs = const [],
+    this.pastMovieRecs = const [],
+    this.pastShowRecs = const [],
+    this.currMovieRecs = const [],
+    this.currShowRecs = const [],
     this.toWatchMovies = const [],
     this.toWatchShows = const [],
     this.watchedMovies = const [],
@@ -22,8 +26,10 @@ class UserModel {
   toJson(){
     return {
       "disliked": disliked,
-      "pastRecs": pastRecs,
-      "currRecs": currRecs,
+      "pastMovieRecs": pastMovieRecs,
+      "pastShowRecs": pastShowRecs,
+      "currMovieRecs": currMovieRecs,
+      "currShowRecs": currShowRecs,
       "toWatchMovies": toWatchMovies,
       "toWatchShows": toWatchShows,
       "watchedMovies": watchedMovies,
@@ -35,8 +41,10 @@ class UserModel {
     final data = document.data()!;
     return UserModel(
       disliked: data["disliked"],
-      pastRecs: data["pastRecs"],
-      currRecs: data["currRecs"],
+      pastMovieRecs: data["pastMovieRecs"],
+      pastShowRecs: data["pastShowRecs"],
+      currMovieRecs: data["currMovieRecs"],
+      currShowRecs: data["currShowRecs"],
       toWatchMovies: data["toWatchMovies"],
       toWatchShows: data["toWatchShows"],
       watchedMovies: data["watchedMovies"],

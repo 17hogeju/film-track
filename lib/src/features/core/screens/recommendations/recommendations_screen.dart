@@ -19,8 +19,8 @@ class RecommendationScreen extends StatelessWidget {
               if (snapshot.connectionState == ConnectionState.done) {
                 if (snapshot.hasData) {
                   UserModel userData = snapshot.data as UserModel;
-                  var recommendations = userData.currRecs;
-                  var textList = recommendations.map<Text>((s) => Text(s)).toList();
+                  var recommendations = userData.currMovieRecs;
+                  var textList = recommendations.map<Text>((s) => Text(s.toString())).toList();
                   return Column(children: textList);
                 } else if (snapshot.hasError) {
                   return Center(child: Text(snapshot.error.toString()));
