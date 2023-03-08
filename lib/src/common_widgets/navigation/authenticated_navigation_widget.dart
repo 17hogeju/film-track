@@ -38,6 +38,7 @@ class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationW
                 // color: Colors.red,
                 padding: const EdgeInsets.all(tDefaultSize),
                 decoration: const BoxDecoration(color: tCardBgColor),
+                width: double.infinity,
                 child: _navigationScreens.elementAt(_selectedIndex),
               ),
           bottomNavigationBar: BottomNavigationBar(

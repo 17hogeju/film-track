@@ -21,7 +21,7 @@ class SafeWrapper extends StatelessWidget {
             title:  Text(title)
         ),
         body: Container(
-          padding: const EdgeInsets.all(tDefaultSize),
+          padding: const EdgeInsets.fromLTRB(tDefaultSize,tDefaultSize,tDefaultSize,0.0),
           decoration: const BoxDecoration(color: tCardBgColor),
           child: child
         )

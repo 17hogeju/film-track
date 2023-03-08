@@ -1,6 +1,7 @@
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/authentication/controllers/register_controller.dart';
+import 'package:filmtrack/src/features/authentication/models/user_model.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -48,9 +49,9 @@ class RegisterFormWidget extends StatelessWidget {
             SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: (){
+                    onPressed: () {
                       if(_formKey.currentState!.validate()) {
-                        RegisterController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
+                        RegisterController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim(), const UserModel());
                       }
                     },
                     child: Text(tRegister.toUpperCase())

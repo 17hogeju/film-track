@@ -41,4 +41,9 @@ const String tChangePassword = "Change Password";
 const String tLogout = "Logout";
 const String tDeleteAccount = "DeleteAccount";
 
+// -- To Watch List Text
+const String tMovies = "Movies";
+const String tShows = "Shows";
+const String tUntilRefresh = "until refresh: ";
+
 

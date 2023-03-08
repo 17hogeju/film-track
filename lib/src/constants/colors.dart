@@ -12,3 +12,6 @@ const tAccentColorVariant = Color(0xFFFFD924);
 const tCardBgColor = Color(0xFFD9D9D9);
 const tWhiteColor = Color(0xFFFFFFFF);
 const tDarkColor = Color(0xFF131326);
+const tDarkColorVariant = Color(0xFF353550);
+const tBorderColor = Color(0xFFE4E4F5);
+const tDanger = Color(0xFFF27E7E);

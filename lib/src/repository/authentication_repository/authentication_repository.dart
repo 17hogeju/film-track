@@ -1,6 +1,5 @@
 import 'package:filmtrack/src/common_widgets/navigation/authenticated_navigation_widget.dart';
 import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
-import 'package:filmtrack/src/features/core/screens/dashboard/dashboard_screen.dart';
 import 'package:filmtrack/src/repository/authentication_repository/exceptions/register_email_password_failure.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
