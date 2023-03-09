@@ -18,9 +18,12 @@ class _CarouselAndCardState extends State<CarouselAndCard> {
   late List<Image> images = [];
   final String url = "https://image.tmdb.org/t/p/w500";
 
+
+
   @override
   void initState() {
     super.initState();
+    activePage = 0;
     pageController = PageController(viewportFraction: 0.7);
     for (MediaModel item in widget.mediaList) {
       images.add(Image.network(url + item.posterPath));
@@ -28,17 +31,27 @@ class _CarouselAndCardState extends State<CarouselAndCard> {
   }
 
   @override
+  void didUpdateWidget(CarouselAndCard oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (oldWidget.mediaList != widget.mediaList) {
+      setState(() {
+        images.clear();
+        for (MediaModel item in widget.mediaList) {
+          images.add(Image.network(url + item.posterPath));
+        }
+      });
+    }
+  }
+
+  @override
+  void dispose() {
+    super.dispose();
+    images.clear();
+  }
+
+  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
-    for (MediaModel media in widget.mediaList) {
-      print(media.title);
-    }
-
-    // return ListView(
-    //     children: [
-    //       SizedBox(
-    //           height: 440,
-    //           child: Column(
     return Column(
             children: [
               SizedBox(
