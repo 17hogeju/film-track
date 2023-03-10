@@ -7,7 +7,7 @@ class MediaModel {
   final String mediaType;
   final String overview;
   final String releaseDate;
-  final List<dynamic> credits;
+  final String credits;
   final List<dynamic> genreIds;
   final List<dynamic> providerIds;
   final String posterPath;
