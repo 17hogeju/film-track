@@ -12,22 +12,19 @@ class MediaModel {
   final List<dynamic> providerIds;
   final String posterPath;
 
+  const MediaModel(
+      {required this.id,
+      required this.title,
+      required this.originalTitle,
+      required this.mediaType,
+      required this.overview,
+      required this.releaseDate,
+      required this.credits,
+      required this.genreIds,
+      required this.providerIds,
+      required this.posterPath});
 
-
-  const MediaModel({
-    required this.id,
-    required this.title,
-    required this.originalTitle,
-    required this.mediaType,
-    required this.overview,
-    required this.releaseDate,
-    required this.credits,
-    required this.genreIds,
-    required this.providerIds,
-    required this.posterPath
-  });
-
-  toJson(){
+  toJson() {
     return {
       "id": id,
       "title": title,
@@ -42,7 +39,8 @@ class MediaModel {
     };
   }
 
-  factory MediaModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
+  factory MediaModel.fromSnapshot(
+      DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
     return MediaModel(
         id: data["id"],
@@ -54,7 +52,22 @@ class MediaModel {
         credits: data["credits"],
         genreIds: data["genre_ids"],
         providerIds: data["provider_ids"],
-        posterPath: data["poster_path"]
-    );
+        posterPath: data["poster_path"]);
+  }
+
+  factory MediaModel.fromQuerySnapshot(
+      QueryDocumentSnapshot<Map<String, dynamic>> qdocument) {
+    final data = qdocument.data();
+    return MediaModel(
+        id: data["id"],
+        title: data["title"],
+        originalTitle: data["original_title"],
+        mediaType: data["media_type"],
+        overview: data["overview"],
+        releaseDate: data["release_date"],
+        credits: data["credits"],
+        genreIds: data["genre_ids"],
+        providerIds: data["provider_ids"],
+        posterPath: data["poster_path"]);
   }
 }
