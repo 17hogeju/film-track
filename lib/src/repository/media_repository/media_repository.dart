@@ -1,5 +1,6 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:filmtrack/src/features/core/models/media_model.dart';
+import 'package:filmtrack/src/features/core/models/title_model.dart';
 import 'package:get/get.dart';
 
 class MediaRepository extends GetxController {
@@ -13,4 +14,11 @@ class MediaRepository extends GetxController {
     return mediaData;
 
   }
+
+  Future<TitleModel> getMediaTitles() async {
+    var doc = await _db.collection("titles").doc("titles").get();
+    var titleData = TitleModel.fromSnapshot(doc);
+    return titleData;
+  }
+
 }

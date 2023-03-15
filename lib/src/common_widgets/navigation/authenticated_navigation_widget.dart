@@ -34,13 +34,17 @@ class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationW
             automaticallyImplyLeading: false,
             title:  Text(_navigationOptions.elementAt(_selectedIndex))
           ),
-          body: Container(
-                // color: Colors.red,
+          body: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              return Container(
+                width: constraints.maxWidth,
+                height: constraints.maxHeight,
+                color: tCardBgColor,
                 padding: const EdgeInsets.all(tDefaultSize),
-                decoration: const BoxDecoration(color: tCardBgColor),
-                width: double.infinity,
-                child: _navigationScreens.elementAt(_selectedIndex),
-              ),
+                child:  _navigationScreens.elementAt(_selectedIndex)
+              );
+            },
+          ),
           bottomNavigationBar: BottomNavigationBar(
             items: const <BottomNavigationBarItem>[
               BottomNavigationBarItem(

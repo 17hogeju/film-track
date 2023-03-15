@@ -30,13 +30,4 @@ class RecommendationsController extends GetxController {
       }
     }
   }
-
-
-
-  // getMediaData(int id) {
-  //   return _mediaRepo.getMediaData(id);
-  // }
-
-
-
 }
