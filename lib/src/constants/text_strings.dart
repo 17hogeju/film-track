@@ -29,6 +29,7 @@ const String tHomeWelcome = "Welcome!";
 const String tToWatchList = "To Watch List";
 const String tWatchedList = "Watched List";
 const String tSettings = "Settings";
+const String tSearchHint = "Search";
 
 // -- Navigation Text
 const String tHome = "Home";

@@ -1,12 +1,17 @@
 import 'package:filmtrack/src/features/core/models/title_model.dart';
 import 'package:filmtrack/src/repository/media_repository/media_repository.dart';
+import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
 
   final _mediaRepo = Get.put(MediaRepository());
-  final List queryResults = [];
+
+  final searchText = TextEditingController();
+
+  List searchResults = [];
+
 
   List<int> computeLPS(String pattern) {
     int m = pattern.length;
@@ -61,13 +66,15 @@ class DashboardController extends GetxController {
     return counter;
   }
 
-  getSearchResults(userQuery) async {
-    queryResults.clear();
-    TitleModel mediaTitles = await _mediaRepo.getMediaTitles();
-    var titles = mediaTitles.titles;
-    for (var title in titles){
-      if (kmp(title, userQuery) != 0) {
-        queryResults.add(title);
+
+  getSearchResults(String searchQuery) async {
+    searchResults.clear();
+    if (searchQuery != null) {
+      TitleModel mediaTitles = await _mediaRepo.getMediaTitles();
+      for (var title in mediaTitles.titles){
+        if (kmp(title, searchQuery) != 0) {
+          searchResults.add(title);
+        }
       }
     }
   }

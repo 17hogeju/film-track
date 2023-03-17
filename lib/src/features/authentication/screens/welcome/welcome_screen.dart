@@ -16,45 +16,47 @@ class WelcomeScreen extends StatelessWidget {
     // var brightness = mediaQuery.platformBrightness;
     // final isDarkMode = brightness == Brightness.dark;
 
-    return Scaffold(
-      body: Container(
-        padding: const EdgeInsets.all(tDefaultSizeDouble),
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-          children: [
-            Image(
-                image: const AssetImage(tWelcomeImage),
-                height: height * 0.6),
-            Column(
-              children: [
-                Text(tAppName,
-                    style: Theme.of(context).textTheme.headlineMedium),
-                Text(
-                  tAppTagline,
-                  style: Theme.of(context).textTheme.titleSmall,
-                  textAlign: TextAlign.center,
-                ),
-              ],
-            ),
-            Row(
-              children: [
-                Expanded(
-                  child: OutlinedButton(
-                    onPressed: () => Get.to(() => const LoginScreen()),
-                    child: Text(tLogin.toUpperCase()),
+    return SafeArea(
+      child: Scaffold(
+        body: SingleChildScrollView(
+          padding: const EdgeInsets.all(tDefaultSizeDouble),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              Image(
+                  image: const AssetImage(tWelcomeImage),
+                  height: height * 0.6),
+              Column(
+                children: [
+                  Text(tAppName,
+                      style: Theme.of(context).textTheme.headlineMedium),
+                  Text(
+                    tAppTagline,
+                    style: Theme.of(context).textTheme.titleSmall,
+                    textAlign: TextAlign.center,
                   ),
-                ),
-                const SizedBox(width: tDefaultPaddingWidth),
-                Expanded(
-                  child: ElevatedButton(
-                      onPressed: () => Get.to(() => const RegisterScreen()),
-                      child: Text(tRegister.toUpperCase())),
-                )
-              ],
-            )
-          ]
+                ],
+              ),
+              Row(
+                children: [
+                  Expanded(
+                    child: OutlinedButton(
+                      onPressed: () => Get.to(() => const LoginScreen()),
+                      child: Text(tLogin.toUpperCase()),
+                    ),
+                  ),
+                  const SizedBox(width: tDefaultPaddingWidth),
+                  Expanded(
+                    child: ElevatedButton(
+                        onPressed: () => Get.to(() => const RegisterScreen()),
+                        child: Text(tRegister.toUpperCase())),
+                  )
+                ],
+              )
+            ]
+          )
         )
-      )
+      ),
     );
   }
 }
