@@ -27,28 +27,32 @@ class _MediaToggleWidgetState extends State<MediaToggleWidget> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(children: [
-      Text(
-        "${ _isMovies ? tMovies : tShows} $tUntilRefresh ",
-        style: const TextStyle(
-          fontWeight: FontWeight.bold,
-          color: tDarkColorVariant
-        ),
-      ),
-      const SizedBox(height: tDefaultSize,),
-      // Toggle
-      Row(
-        children: [
-          buildToggleHalf(true, tMovies, const BorderRadius.only(
-              topLeft: Radius.circular(tDefaultSize),
-              bottomLeft: Radius.circular(tDefaultSize)),),
-          buildToggleHalf(false, tShows, const BorderRadius.only(
-              topRight: Radius.circular(tDefaultSize),
-              bottomRight: Radius.circular(tDefaultSize)),)
-        ],),
-      const SizedBox(height: tDefaultSize,),
-      _isMovies ? widget.moviesWidget : widget.showsWidget
-    ]);
+    return SingleChildScrollView(
+      child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            children: [
+          Text(
+            "${ _isMovies ? tMovies : tShows} $tUntilRefresh ",
+            style: const TextStyle(
+              fontWeight: FontWeight.bold,
+              color: tDarkColorVariant
+            ),
+          ),
+          const SizedBox(height: tDefaultSize,),
+          // Toggle
+          Row(
+            children: [
+              buildToggleHalf(true, tMovies, const BorderRadius.only(
+                  topLeft: Radius.circular(tDefaultSize),
+                  bottomLeft: Radius.circular(tDefaultSize)),),
+              buildToggleHalf(false, tShows, const BorderRadius.only(
+                  topRight: Radius.circular(tDefaultSize),
+                  bottomRight: Radius.circular(tDefaultSize)),)
+            ],),
+          const SizedBox(height: tDefaultSize,),
+          _isMovies ? widget.moviesWidget : widget.showsWidget
+        ]),
+    );
   }
 
   Expanded buildToggleHalf(isMovies, toggleText, borderRadius) {

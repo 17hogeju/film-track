@@ -69,7 +69,7 @@ class DashboardScreen extends StatefulWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const ToWatchListScreen()),
+                    onPressed: () => Get.to(() => ToWatchListScreen()),
                     child: const Text(tToWatchList)),
               ),
               const SizedBox(height: tDefaultSize * 2),
@@ -117,14 +117,7 @@ class DashboardScreen extends StatefulWidget {
                           List<Widget> searchResults = [];
                           for (MediaModel result in snapshot.data!) {
                             searchResults.add(
-                              SearchItem(
-                                // mediaGenres: result.genreIds.toString(),
-                                mediaGenres: result.genres,
-                                mediaTitle: result.title,
-                                mediaIcon: result.mediaType == 'tv' ? Icons.tv_rounded : Icons.movie_creation_rounded,
-                                releaseDate: result.releaseDate,
-                                mediaProviders: result.providerNames,
-                              ),
+                              SearchItem(mediaModel: result),
                             );
                           }
                           return Align(alignment: Alignment.topCenter, child: Column(children: searchResults));

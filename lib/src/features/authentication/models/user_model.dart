@@ -1,6 +1,7 @@
 import 'package:cloud_firestore/cloud_firestore.dart';
 
 class UserModel {
+  final String? id;
   final List<dynamic> disliked;
   final List<dynamic> pastMovieRecs;
   final List<dynamic> pastShowRecs;
@@ -12,6 +13,7 @@ class UserModel {
   final List<dynamic> watchedShows;
 
   const UserModel({
+    this.id,
     this.disliked = const [],
     this.pastMovieRecs = const [],
     this.pastShowRecs = const [],
@@ -40,6 +42,7 @@ class UserModel {
   factory UserModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
     return UserModel(
+      id: document.id,
       disliked: data["disliked"],
       pastMovieRecs: data["pastMovieRecs"],
       pastShowRecs: data["pastShowRecs"],

@@ -12,6 +12,10 @@ const tFormHeight = 16.0;
 
 const tItemPadding = 5.0;
 
-const tIconButtonSize = 35.0;
+const tIconButtonSize = 50.0;
 
 const tPaddingTop = 52.0;
+
+const tMinHeight = 220.0;
+
+const tListItemHeight = 60.0;

@@ -6,11 +6,13 @@ class MyIconButton extends StatelessWidget {
   const MyIconButton({
     super.key,
     required this.icon,
-    required this.color
+    required this.color,
+    required this.onTap
   });
 
   final IconData icon;
   final Color color;
+  final Function onTap;
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +20,9 @@ class MyIconButton extends StatelessWidget {
         child: Material(
             color: Colors.white,
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                onTap;
+              },
               child: SizedBox(width: tIconButtonSize, height: tIconButtonSize, child: Icon(icon, color: color)),
             )
         )
