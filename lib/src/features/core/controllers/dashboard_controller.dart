@@ -1,3 +1,5 @@
+import 'package:filmtrack/src/constants/titles.dart';
+import 'package:filmtrack/src/features/core/models/media_model.dart';
 import 'package:filmtrack/src/features/core/models/title_model.dart';
 import 'package:filmtrack/src/repository/media_repository/media_repository.dart';
 import 'package:flutter/material.dart';
@@ -9,9 +11,6 @@ class DashboardController extends GetxController {
   final _mediaRepo = Get.put(MediaRepository());
 
   final searchText = TextEditingController();
-
-  List searchResults = [];
-
 
   List<int> computeLPS(String pattern) {
     int m = pattern.length;
@@ -67,17 +66,36 @@ class DashboardController extends GetxController {
   }
 
 
-  getSearchResults(String searchQuery) async {
-    searchResults.clear();
+  Future<List<MediaModel>> getSearchResults(searchQuery) async {
+    List<String> titles = [];
+    List<MediaModel> res = [];
+    print("here");
     if (searchQuery != null) {
-      TitleModel mediaTitles = await _mediaRepo.getMediaTitles();
-      for (var title in mediaTitles.titles){
+      for (var title in tTitlesLowercase) {
         if (kmp(title, searchQuery) != 0) {
-          searchResults.add(title);
+          titles.add(title);
         }
       }
+      print(titles);
+      // TitleModel mediaTitles = await _mediaRepo.getMediaTitles();
+      // for (var title in mediaTitles.titles){
+      //   if (kmp(title, searchQuery) != 0) {
+      //     titles.add(title);
+      //   }
+      // }
     }
+
+    if (titles.isNotEmpty && titles != null) {
+      for (var titleL in titles) {
+        final mediaData = await _mediaRepo.getMediaDataByTitleL(titleL);
+        if (mediaData != null) {
+          res.add(mediaData);
+        }
+      }
+      return res;
+    } else {
+      return [];
+    }
+
   }
-
-
 }

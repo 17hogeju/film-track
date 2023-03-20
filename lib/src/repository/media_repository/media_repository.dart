@@ -12,6 +12,16 @@ class MediaRepository extends GetxController {
     var doc = await _db.collection("media").doc(id.toString()).get();
     var mediaData = MediaModel.fromSnapshot(doc);
     return mediaData;
+  }
+
+  Future<MediaModel?> getMediaDataByTitleL(String titleL) async {
+    var doc = await _db.collection("media").where('title_lowercase', isEqualTo: titleL).get().then(
+        (querySnapshot) {
+          return querySnapshot.docs[0];
+        }
+    );
+    var mediaData = MediaModel.fromQuerySnapshot(doc);
+    return mediaData;
 
   }
 
@@ -22,3 +32,4 @@ class MediaRepository extends GetxController {
   }
 
 }
+
