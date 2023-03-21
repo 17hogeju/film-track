@@ -65,10 +65,24 @@ class _SearchItemState extends State<SearchItem> {
                     )
                 )
               ),
-              MyIconButton(
-                color: tPrimaryColor,
-                icon: Icons.star_rounded,
-                onTap: (){},),
+              ClipOval(
+                  child: Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () {
+                          setState(() {
+                            controller.addToWatchedList(widget.mediaModel);
+                          });
+                        },
+                        child: const SizedBox(
+                            width: tIconButtonSize,
+                            height: tIconButtonSize,
+                            child: Icon(
+                                Icons.star_rounded,
+                                color: Colors.black38)),
+                      )
+                  )
+              ),
             ],
           ),
         ),

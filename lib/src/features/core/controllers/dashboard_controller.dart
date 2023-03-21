@@ -82,6 +82,19 @@ class DashboardController extends GetxController {
     }
   }
 
+  addToWatchedList(MediaModel media) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (media.mediaType == "tv") {
+        user.watchedShows.add(media.id);
+      } else {
+        user.watchedMovies.add(media.id);
+      }
+      await _userRepo.updateUserRecord(user);
+    }
+  }
+
 
   Future<List<MediaModel>> getSearchResults(searchQuery) async {
     List<String> titles = [];

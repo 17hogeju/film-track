@@ -76,7 +76,7 @@ class DashboardScreen extends StatefulWidget {
               SizedBox(
                 width: double.infinity,
                 child: ElevatedButton(
-                    onPressed: () => Get.to(() => const WatchedListScreen()),
+                    onPressed: () => Get.to(() => WatchedListScreen()),
                     child: const Text(tWatchedList)),
               ),
               const SizedBox(height: tDefaultSize * 2),
