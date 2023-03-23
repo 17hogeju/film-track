@@ -2,6 +2,7 @@ import 'package:filmtrack/src/common_widgets/media_toggle.dart';
 import 'package:filmtrack/src/common_widgets/safe_wrapper.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
+import 'package:filmtrack/src/features/authentication/models/user_model.dart';
 import 'package:filmtrack/src/features/core/controllers/watched_list_controller.dart';
 import 'package:filmtrack/src/features/core/models/media_model.dart';
 import 'package:filmtrack/src/features/core/screens/watched_list/watched_item.dart';
@@ -27,14 +28,14 @@ class WatchedListScreen extends StatelessWidget {
                 } else {
                   List<Widget> movies = [];
                   List<Widget> shows = [];
-                  for (MediaModel result in controller.watchedMovies) {
+                  for (RatingMediaModel result in controller.watchedMovies) {
                     movies.add(
-                      WatchedListItem(mediaItem: result),
+                      WatchedListItem(mediaItem: result.media, rating: result.rating),
                     );
                   }
-                  for (MediaModel result in controller.watchedShows) {
+                  for (RatingMediaModel result in controller.watchedShows) {
                     shows.add(
-                      WatchedListItem(mediaItem: result),
+                      WatchedListItem(mediaItem: result.media, rating: result.rating),
                     );
                   }
                   return MediaToggleWidget(

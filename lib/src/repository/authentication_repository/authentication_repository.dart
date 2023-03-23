@@ -1,6 +1,7 @@
 import 'package:filmtrack/src/common_widgets/navigation/authenticated_navigation_widget.dart';
 import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:filmtrack/src/repository/authentication_repository/exceptions/register_email_password_failure.dart';
+import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get/get.dart';
 
@@ -26,7 +27,12 @@ class AuthenticationRepository extends GetxController {
   Future<void> registerUserWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
-      firebaseUser.value != null ? Get.offAll(() => const AuthenticatedNavigationWidget()) : Get.to(() => const WelcomeScreen());
+      if (firebaseUser.value != null) {
+        UserRepository.instance.createUser(firebaseUser.value!.uid);
+        Get.offAll(() => const AuthenticatedNavigationWidget());
+      } else {
+        Get.to(() => const WelcomeScreen());
+      }
     } on FirebaseAuthException catch(e) {
       final ex = RegisterWithEmailAndPasswordFailure.code(e.code);
       throw ex;

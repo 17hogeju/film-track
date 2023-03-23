@@ -7,10 +7,13 @@ import 'package:flutter/material.dart';
 class WatchedListItem extends StatelessWidget {
   const WatchedListItem(
       {Key? key,
-        required this.mediaItem})
+        required this.mediaItem,
+        required this.rating
+      })
       : super(key: key);
 
   final MediaModel mediaItem;
+  final int rating;
 
   @override
   Widget build(BuildContext context) {
@@ -63,8 +66,13 @@ class WatchedListItem extends StatelessWidget {
           ),
           Row(
             children: [
-              MyIconButton(icon: Icons.star_rounded, color: tPrimaryColor, onTap: (){},),
-              MyIconButton(icon: Icons.delete_rounded, color: tPrimaryColor, onTap: (){})
+              Text(
+                "$rating / 5",
+                style: Theme.of(context).textTheme.bodySmall,
+              ),
+              const Icon(Icons.star_rounded, color: tDarkColorVariant)
+              // MyIconButton(icon: Icons.star_rounded, color: tPrimaryColor, onTap: (){},),
+              // MyIconButton(icon: Icons.delete_rounded, color: tPrimaryColor, onTap: (){})
               // SizedBox(width: tItemPadding,),
               // MyIconButton(icon: Icons.delete_rounded, color: tDanger,),
             ],

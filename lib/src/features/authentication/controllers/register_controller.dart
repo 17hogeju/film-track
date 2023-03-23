@@ -15,14 +15,8 @@ class RegisterController extends GetxController {
   final _userRepo = Get.put(UserRepository());
   final _authRepo = Get.put(AuthenticationRepository());
 
-  void registerUser(String email, String password, UserModel user) {
-    String? error = AuthenticationRepository.instance.registerUserWithEmailAndPassword(email, password) as String?;
-    if(error == null){
-      var uid = _authRepo.firebaseUser.value?.uid;
-      if (uid != null) {
-        _userRepo.createUser(user, uid);
-      }
-    }
+  void registerUser(String email, String password) {
+    AuthenticationRepository.instance.registerUserWithEmailAndPassword(email, password);
   }
 
   void loginUser(String email, String password) {

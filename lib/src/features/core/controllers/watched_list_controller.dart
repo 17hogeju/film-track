@@ -11,7 +11,7 @@ class WatchedListController extends GetxController {
   final _authRepo = Get.put(AuthenticationRepository());
   final _mediaRepo = Get.put(MediaRepository());
 
-  final List watchedMovies = [];
+  final List<RatingMediaModel> watchedMovies = [];
   final List watchedShows = [];
 
   getToWatchList() async {
@@ -20,13 +20,13 @@ class WatchedListController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       watchedMovies.clear();
       watchedShows.clear();
-      for (var id in user.watchedMovies) {
-        final movieData = await _mediaRepo.getMediaData(id);
-        watchedMovies.add(movieData);
+      for (RatingModel ratingData in user.watchedMovies) {
+        final movieData = await _mediaRepo.getMediaData(ratingData.mediaId);
+        watchedMovies.add(RatingMediaModel(media: movieData, rating: ratingData.rating));
       }
-      for (var id in user.watchedShows) {
-        final showData = await _mediaRepo.getMediaData(id);
-        watchedShows.add(showData);
+      for (RatingModel ratingData in user.watchedShows) {
+        final showData = await _mediaRepo.getMediaData(ratingData.mediaId);
+        watchedShows.add(RatingMediaModel(media: showData, rating: ratingData.rating));
       }
     }
   }

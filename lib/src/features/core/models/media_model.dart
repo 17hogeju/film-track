@@ -33,22 +33,24 @@ class MediaModel {
     required this.titleLowercase,
   });
 
-  // toJson(){
-  //   return {
-  //     "credits": credits,
-  //     "genres": genres,
-  //     "genre_ids": genreIds,
-  //     "id": id,
-  //     "media_type": mediaType,
-  //     "original_title": originalTitle,
-  //     "overview": overview,
-  //     "poster_path": posterPath,
-  //     "provider_ids": providerIds,
-  //     "release_date": releaseDate,
-  //     "title": title,
-  //     "title_lowercase": titleLowercase
-  //   };
-  // }
+  factory MediaModel.fromFirestore(DocumentSnapshot document) {
+    Map<String, dynamic> data = document.data() as Map<String, dynamic>;
+    return MediaModel(
+        credits: data["credits"],
+        genres: data["genres"],
+        genreIds: data["genre_ids"],
+        id: data["id"],
+        mediaType: data["media_type"],
+        originalTitle: data["original_title"],
+        overview: data["overview"],
+        posterPath: data["poster_path"],
+        providerNames: data["provider_names"],
+        providerIds: data["provider_ids"],
+        releaseDate: data["release_date"],
+        title: data["title"],
+        titleLowercase: data["title_lowercase"]
+    );
+  }
 
   factory MediaModel.fromSnapshot(DocumentSnapshot<Map<String, dynamic>> document) {
     final data = document.data()!;
@@ -88,58 +90,4 @@ class MediaModel {
     );
   }
 
-  // factory MediaModel.fromFirestore(
-  //     DocumentSnapshot<Map<String, dynamic>> snapshot,
-  //     SnapshotOptions? options,
-  //     ) {
-  //   final data = snapshot.data();
-  //   return MediaModel(
-  //       credits: data?["credits"],
-  //       genres: data?["genres"],
-  //       genreIds: data?["genre_ids"],
-  //       id: data?["id"],
-  //       mediaType: data?["media_type"],
-  //       originalTitle: data?["original_title"],
-  //       overview: data?["overview"],
-  //       posterPath: data?["poster_path"],
-  //       providerIds: data?["provider_ids"],
-  //       releaseDate: data?["release_date"],
-  //       title: data?["title"],
-  //       titleLowercase: data?["title_lowercase"]
-  //   );
-  // }
-
-  // Map<String, dynamic> toFirestore() {
-  //   return {
-  //     "credits": credits,
-  //     "genres": genres,
-  //     "genre_ids": genreIds,
-  //     "id": id,
-  //     "media_type": mediaType,
-  //     "original_title": originalTitle,
-  //     "overview": overview,
-  //     "poster_path": posterPath,
-  //     "provider_ids": providerIds,
-  //     "release_date": releaseDate,
-  //     "title": title,
-  //     "title_lowercase": titleLowercase
-  //   };
-  // }
-
-  // factory MediaModel.fromJson(Map<String,dynamic> json) {
-  //   return MediaModel(
-  //       credits: json["credits"],
-  //       genres: json["genres"],
-  //       genreIds: json["genre_ids"],
-  //       id: json["id"],
-  //       mediaType: json["media_type"],
-  //       originalTitle: json["original_title"],
-  //       overview: json["overview"],
-  //       posterPath: json["poster_path"],
-  //       providerIds: json["provider_ids"],
-  //       releaseDate: json["release_date"],
-  //       title: json["title"],
-  //       titleLowercase: json["title_lowercase"]
-  //   );
-  // }
 }

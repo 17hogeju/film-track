@@ -51,7 +51,7 @@ class RegisterFormWidget extends StatelessWidget {
                 child: ElevatedButton(
                     onPressed: () {
                       if(_formKey.currentState!.validate()) {
-                        RegisterController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim(), const UserModel());
+                        RegisterController.instance.registerUser(controller.email.text.trim(), controller.password.text.trim());
                       }
                     },
                     child: Text(tRegister.toUpperCase())

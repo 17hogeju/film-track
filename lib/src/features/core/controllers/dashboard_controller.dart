@@ -82,14 +82,14 @@ class DashboardController extends GetxController {
     }
   }
 
-  addToWatchedList(MediaModel media) async {
+  addToWatchedList(MediaModel media, int rating) async {
     final uid = _authRepo.firebaseUser.value?.uid;
     if (uid != null) {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
-        user.watchedShows.add(media.id);
+        user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
       } else {
-        user.watchedMovies.add(media.id);
+        user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
       }
       await _userRepo.updateUserRecord(user);
     }
@@ -97,6 +97,8 @@ class DashboardController extends GetxController {
 
 
   Future<List<MediaModel>> getSearchResults(searchQuery) async {
+    print("hi");
+    print(searchQuery);
     List<String> titles = [];
     List<MediaModel> res = [];
     if (searchQuery != null) {
@@ -106,9 +108,11 @@ class DashboardController extends GetxController {
         }
       }
     }
-
+    print(titles);
     if (titles.isNotEmpty && titles != null) {
+      print("im here");
       for (var titleL in titles) {
+        print(titleL);
         final mediaData = await _mediaRepo.getMediaDataByTitleL(titleL);
         if (mediaData != null) {
           res.add(mediaData);
@@ -116,6 +120,7 @@ class DashboardController extends GetxController {
       }
       return res;
     } else {
+
       return [];
     }
 

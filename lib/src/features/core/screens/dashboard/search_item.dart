@@ -1,4 +1,5 @@
 import 'package:filmtrack/src/common_widgets/my_icon_button.dart';
+import 'package:filmtrack/src/common_widgets/rating_dialog.dart';
 import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/features/core/controllers/dashboard_controller.dart';
@@ -69,10 +70,17 @@ class _SearchItemState extends State<SearchItem> {
                   child: Material(
                       color: Colors.white,
                       child: InkWell(
-                        onTap: () {
-                          setState(() {
-                            controller.addToWatchedList(widget.mediaModel);
-                          });
+                        onTap: () async {
+                          double? rating = await showDialog(
+                              context: context,
+                              builder: (context) => RatingDialog(mediaType: widget.mediaModel.mediaType == "tv" ? "TV show": "movie",));
+                          if (rating != null){
+                            setState(() {
+                              controller.addToWatchedList(widget.mediaModel, rating.toInt());
+                            });
+                          }
+                          // Navigator.pop(context);
+
                         },
                         child: const SizedBox(
                             width: tIconButtonSize,
