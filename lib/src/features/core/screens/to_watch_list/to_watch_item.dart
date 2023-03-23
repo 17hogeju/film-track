@@ -1,10 +1,14 @@
 import 'package:filmtrack/src/common_widgets/my_icon_button.dart';
+import 'package:filmtrack/src/common_widgets/rating_dialog.dart';
 import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
+import 'package:filmtrack/src/features/core/controllers/to_watch_list_controller.dart';
+import 'package:filmtrack/src/features/core/controllers/watched_list_controller.dart';
 import 'package:filmtrack/src/features/core/models/media_model.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 
-class ToWatchListItem extends StatelessWidget {
+class ToWatchListItem extends StatefulWidget {
   const ToWatchListItem(
       {Key? key,
       required this.mediaItem})
@@ -13,8 +17,14 @@ class ToWatchListItem extends StatelessWidget {
   final MediaModel mediaItem;
 
   @override
+  State<ToWatchListItem> createState() => _ToWatchListItemState();
+}
+
+class _ToWatchListItemState extends State<ToWatchListItem> {
+  @override
   Widget build(BuildContext context) {
     var width = MediaQuery.of(context).size.width;
+    final controller = Get.put(ToWatchListController());
 
     return Container(
       height: tListItemHeight,
@@ -30,7 +40,7 @@ class ToWatchListItem extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               Icon(
-                  mediaItem.mediaType == "tv" ? Icons.tv_rounded : Icons.movie_creation_rounded,
+                  widget.mediaItem.mediaType == "tv" ? Icons.tv_rounded : Icons.movie_creation_rounded,
                   color: tDarkColorVariant),
               const SizedBox(
                 width: tDefaultSize,
@@ -44,15 +54,15 @@ class ToWatchListItem extends StatelessWidget {
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Text(
-                          mediaItem.title,
+                          widget.mediaItem.title,
                           style: Theme.of(context).textTheme.bodyLarge,
                         ),
                         Text(
-                          mediaItem.releaseDate,
+                          widget.mediaItem.releaseDate,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                         Text(
-                          mediaItem.genres,
+                          widget.mediaItem.genres,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
                       ],
@@ -63,7 +73,29 @@ class ToWatchListItem extends StatelessWidget {
           ),
           Row(
             children: [
-              MyIconButton(icon: Icons.star_rounded, color: tPrimaryColor, onTap: (){},),
+              ClipOval(
+                  child: Material(
+                      color: Colors.white,
+                      child: InkWell(
+                        onTap: () async {
+                          double? rating = await showDialog(
+                              context: context,
+                              builder: (context) => RatingDialog(mediaType: widget.mediaItem.mediaType == "tv" ? "TV show": "movie",));
+                          if (rating != null){
+                            setState(() {
+                              controller.addToWatchedList(widget.mediaItem, rating.toInt());
+                            });
+                          }
+                        },
+                        child: const SizedBox(
+                            width: tIconButtonSize,
+                            height: tIconButtonSize,
+                            child: Icon(
+                                Icons.star_rounded,
+                                color: Colors.black38)),
+                      )
+                  )
+              ),
               // SizedBox(width: tItemPadding,),
               // MyIconButton(icon: Icons.delete_rounded, color: tDanger,),
             ],

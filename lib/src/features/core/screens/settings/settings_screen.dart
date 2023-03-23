@@ -21,18 +21,21 @@ class SettingsScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.center,
               // crossAxisAlignment: CrossAxisAlignment.start,
               children: [
+                const SizedBox(height: tDefaultSize * 4),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {},
                       child: const Text(tUpdateEmail)),
                 ),
+                const SizedBox(height: tDefaultSize * 2),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(
                       onPressed: () {},
                       child: const Text(tChangePassword)),
                 ),
+                const SizedBox(height: tDefaultSize * 2),
                 SizedBox(
                   width: double.infinity,
                   child: ElevatedButton(

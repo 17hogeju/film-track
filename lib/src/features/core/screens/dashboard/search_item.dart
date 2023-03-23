@@ -79,8 +79,6 @@ class _SearchItemState extends State<SearchItem> {
                               controller.addToWatchedList(widget.mediaModel, rating.toInt());
                             });
                           }
-                          // Navigator.pop(context);
-
                         },
                         child: const SizedBox(
                             width: tIconButtonSize,
