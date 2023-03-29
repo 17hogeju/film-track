@@ -15,7 +15,7 @@ class AuthenticatedNavigationWidget extends StatefulWidget {
 
 class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationWidget> {
   int _selectedIndex = 0;
-  static const List<String> _navigationOptions = [tHome, tRecommendations, tSubscriptions];
+  static const List<String> _navigationOptions = [tHome, tRecommendations, tSubscriptionRecommendations];
   static const List<Widget> _navigationScreens = [DashboardScreen(),RecommendationScreen(),SubscriptionsScreen()];
 
   void _onItemTapped(int index) {

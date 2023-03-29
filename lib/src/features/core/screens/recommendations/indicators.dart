@@ -19,6 +19,9 @@ class Indicators extends StatelessWidget {
         shape: BoxShape.circle
       ),
     ));
-    return Row(children: list);
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+        children: list
+    );
   }
 }
