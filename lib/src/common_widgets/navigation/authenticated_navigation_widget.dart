@@ -10,13 +10,23 @@ class AuthenticatedNavigationWidget extends StatefulWidget {
   const AuthenticatedNavigationWidget({Key? key}) : super(key: key);
 
   @override
-  State<AuthenticatedNavigationWidget> createState() => _AuthenticatedNavigationWidgetState();
+  State<AuthenticatedNavigationWidget> createState() =>
+      _AuthenticatedNavigationWidgetState();
 }
 
-class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationWidget> {
+class _AuthenticatedNavigationWidgetState
+    extends State<AuthenticatedNavigationWidget> {
   int _selectedIndex = 0;
-  static const List<String> _navigationOptions = [tHome, tRecommendations, tSubscriptions];
-  static const List<Widget> _navigationScreens = [DashboardScreen(),RecommendationScreen(),SubscriptionsScreen()];
+  static const List<String> _navigationOptions = [
+    tHome,
+    tRecommendations,
+    tSubscriptions
+  ];
+  static const List<Widget> _navigationScreens = [
+    DashboardScreen(),
+    RecommendationScreen(),
+    SubscriptionsScreen()
+  ];
 
   void _onItemTapped(int index) {
     setState(() {
@@ -31,18 +41,16 @@ class _AuthenticatedNavigationWidgetState extends State<AuthenticatedNavigationW
       child: SafeArea(
         child: Scaffold(
           appBar: AppBar(
-            automaticallyImplyLeading: false,
-            title:  Text(_navigationOptions.elementAt(_selectedIndex))
-          ),
+              automaticallyImplyLeading: false,
+              title: Text(_navigationOptions.elementAt(_selectedIndex))),
           body: LayoutBuilder(
             builder: (BuildContext context, BoxConstraints constraints) {
               return Container(
-                width: constraints.maxWidth,
-                height: constraints.maxHeight,
-                color: tCardBgColor,
-                padding: const EdgeInsets.all(tDefaultSize),
-                child:  _navigationScreens.elementAt(_selectedIndex)
-              );
+                  width: constraints.maxWidth,
+                  height: constraints.maxHeight,
+                  color: tCardBgColor,
+                  padding: const EdgeInsets.all(tDefaultSize),
+                  child: _navigationScreens.elementAt(_selectedIndex));
             },
           ),
           bottomNavigationBar: BottomNavigationBar(

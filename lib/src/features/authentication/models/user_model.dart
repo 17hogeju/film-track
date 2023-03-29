@@ -34,18 +34,17 @@ class UserModel {
   final List<RatingModel> watchedMovies;
   final List<RatingModel> watchedShows;
 
-  const UserModel({
-    required this.id,
-    this.disliked = const [],
-    this.pastMovieRecs = const [],
-    this.pastShowRecs = const [],
-    this.currMovieRecs = const [],
-    this.currShowRecs = const [],
-    this.toWatchMovies = const [],
-    this.toWatchShows = const [],
-    this.watchedMovies = const [],
-    this.watchedShows = const []
-});
+  const UserModel(
+      {required this.id,
+      this.disliked = const [],
+      this.pastMovieRecs = const [],
+      this.pastShowRecs = const [],
+      this.currMovieRecs = const [],
+      this.currShowRecs = const [],
+      this.toWatchMovies = const [],
+      this.toWatchShows = const [],
+      this.watchedMovies = const [],
+      this.watchedShows = const []});
 
   toJson() {
     return {
@@ -70,7 +69,7 @@ class UserModel {
         .toList();
     final watchedShows = (data["watchedShows"] as List)
         .map((ratingData) => RatingModel(
-        mediaId: ratingData["mediaId"], rating: ratingData["rating"]))
+            mediaId: ratingData["mediaId"], rating: ratingData["rating"]))
         .toList();
     return UserModel(
         id: document.id,

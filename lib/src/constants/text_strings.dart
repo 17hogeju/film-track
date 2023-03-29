@@ -1,6 +1,7 @@
 // -- Welcome Screen Text
 const String tAppName = "FilmTrack";
-const String tAppTagline = "Start using the simple system for tracking media and finding streaming services that align with your interests";
+const String tAppTagline =
+    "Start using the simple system for tracking media and finding streaming services that align with your interests";
 
 // -- Login Screen Text
 const String tLogin = "Login";
@@ -46,5 +47,5 @@ const String tDeleteAccount = "DeleteAccount";
 const String tMovies = "Movies";
 const String tShows = "Shows";
 const String tUntilRefresh = "until refresh: ";
-
-
+const String tConfirmAddTitle = "To Watch List";
+const String tConfirmAdd = "Add to your To Watch List?";

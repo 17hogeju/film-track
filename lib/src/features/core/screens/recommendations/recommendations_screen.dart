@@ -13,11 +13,13 @@ class RecommendationScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RecommendationsController());
-    return Column(children: [
+    final recommendationsController = Get.put(RecommendationsController());
+
+    return SingleChildScrollView(
+        child: Column(children: [
       const SizedBox(width: tDefaultSize * 5),
       FutureBuilder(
-        future: controller.getMediaRecommendations(),
+        future: recommendationsController.getMediaRecommendations(),
         builder: (context, snapshot) {
           if (snapshot.connectionState == ConnectionState.waiting) {
             return const Center(child: Text('loading...'));
@@ -27,13 +29,15 @@ class RecommendationScreen extends StatelessWidget {
             } else {
               return MediaToggleWidget(
                   moviesWidget: CarouselAndCard(
-                  mediaList: controller.movieRecommendations),
+                    mediaList: recommendationsController.movieRecommendations,
+                  ),
                   showsWidget: CarouselAndCard(
-                  mediaList: controller.showRecommendations));
+                    mediaList: recommendationsController.showRecommendations,
+                  ));
             }
           }
         },
       )
-    ]);
+    ]));
   }
 }

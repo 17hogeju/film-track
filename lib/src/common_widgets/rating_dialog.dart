@@ -1,14 +1,13 @@
 import 'dart:async';
 
 import 'package:filmtrack/src/constants/colors.dart';
+import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_rating_bar/flutter_rating_bar.dart';
 import 'package:get/get.dart';
 
 class RatingDialog extends StatefulWidget {
-  const RatingDialog({
-    required this.mediaType,
-    super.key});
+  const RatingDialog({required this.mediaType, super.key});
   final String mediaType;
 
   @override
@@ -48,13 +47,13 @@ class _RatingDialogState extends State<RatingDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: Text('CANCEL'),
+          child: const Text(tOK),
           onPressed: () {
             Get.back();
           },
         ),
         TextButton(
-          child: Text('OK'),
+          child: const Text(tCANCEL),
           onPressed: () {
             // Here you can handle the user's rating
             Get.back(result: _rating);

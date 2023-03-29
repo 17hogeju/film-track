@@ -1,4 +1,5 @@
 import 'package:filmtrack/src/features/authentication/models/user_model.dart';
+import 'package:filmtrack/src/features/core/models/media_model.dart';
 import 'package:filmtrack/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:filmtrack/src/repository/media_repository/media_repository.dart';
 import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
@@ -28,6 +29,58 @@ class RecommendationsController extends GetxController {
         final showData = await _mediaRepo.getMediaData(id);
         showRecommendations.add(showData);
       }
+    }
+  }
+
+  addToWatchList(MediaModel media) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (media.mediaType == "tv") {
+        user.toWatchShows.add(media.id);
+      } else {
+        user.toWatchMovies.add(media.id);
+      }
+      await _userRepo.updateUserRecord(user);
+    }
+  }
+
+  removeFromToWatchList(MediaModel media) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (media.mediaType == "tv") {
+        user.toWatchShows.remove(media.id);
+      } else {
+        user.toWatchMovies.remove(media.id);
+      }
+      await _userRepo.updateUserRecord(user);
+    }
+  }
+
+  addToWatchedList(MediaModel media, int rating) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (media.mediaType == "tv") {
+        user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
+      } else {
+        user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
+      }
+      await _userRepo.updateUserRecord(user);
+    }
+  }
+
+  removeFromWatchedList(MediaModel media) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (media.mediaType == "tv") {
+        user.watchedShows.removeWhere((item) => item.mediaId == media.id);
+      } else {
+        user.watchedMovies.removeWhere((item) => item.mediaId == media.id);
+      }
+      await _userRepo.updateUserRecord(user);
     }
   }
 }
