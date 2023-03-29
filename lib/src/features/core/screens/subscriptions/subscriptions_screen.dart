@@ -23,11 +23,11 @@ class SubscriptionsScreen extends StatelessWidget {
             } else {
               return Center(child: Column(
                 children: [
-                  const Text('Based on Your Watched List'),
+                  Text('Based on Your Watched List', style: Theme.of(context).textTheme.headlineSmall,),
                   const SizedBox(height: tDefaultSize),
                   SubCarousel(recommendations: controller.watchedRecommendations),
                   const SizedBox(height: tDefaultSizeDouble,),
-                  const Text('Based on Your To Watch List'),
+                  Text('Based on Your To Watch List', style: Theme.of(context).textTheme.headlineSmall,),
                   const SizedBox(height: tDefaultSize),
                   SubCarousel(recommendations: controller.toWatchRecommendations),
                 ]
