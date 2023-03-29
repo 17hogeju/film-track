@@ -1,8 +1,8 @@
 # FilmTrack
-FilmTrack is a mobile application that helps you prioritize what to watch next based off of your TV and Film interests and your budget.
+FilmTrack is a mobile application that helps you track your media interests, discover new media, and identify which subscription services are right for you.
 
 ## Abstract
-FilmTrack provides a simple system for keeping track of the shows and movies you have watched and want to watch while also providing suggestions on what to watch next based on your preferences. It utilizes machine learning to recommend shows and movies that other similar users liked. Based on what you have watched, are watching, want to watch, might want to watch, and monthly budget, FilmTrack suggests which streaming platforms to use that will give you the best viewing options each month.
+FilmTrack provides a simple system for tracking your media interests and identifying which streaming services align most with your media preferences. It utilizes machine learning to recommend titles based on your media collection’s metadata and media that similar users enjoyed.
 
 ---
 
