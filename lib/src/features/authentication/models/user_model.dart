@@ -27,14 +27,14 @@ class UserModel {
   final List<dynamic> disliked;
   final List<dynamic> pastMovieRecs;
   final List<dynamic> pastShowRecs;
-  final List<dynamic> currMovieRecs;
-  final List<dynamic> currShowRecs;
+  List<dynamic> currMovieRecs;
+  List<dynamic> currShowRecs;
   final List<dynamic> toWatchMovies;
   final List<dynamic> toWatchShows;
   final List<RatingModel> watchedMovies;
   final List<RatingModel> watchedShows;
 
-  const UserModel(
+  UserModel(
       {required this.id,
       this.disliked = const [],
       this.pastMovieRecs = const [],

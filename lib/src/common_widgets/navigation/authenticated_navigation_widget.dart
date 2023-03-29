@@ -20,7 +20,7 @@ class _AuthenticatedNavigationWidgetState
   static const List<String> _navigationOptions = [
     tHome,
     tRecommendations,
-    tSubscriptions
+    tSubscriptionRecommendations
   ];
   static const List<Widget> _navigationScreens = [
     DashboardScreen(),

@@ -36,6 +36,7 @@ const String tSearchHint = "Search";
 const String tHome = "Home";
 const String tRecommendations = "Recommendations";
 const String tSubscriptions = "Subscriptions";
+const String tSubscriptionRecommendations = "Subscription Recommendations";
 
 // -- Settings Text
 const String tUpdateEmail = "Update Email";
