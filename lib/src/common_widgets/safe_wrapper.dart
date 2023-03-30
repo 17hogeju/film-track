@@ -17,7 +17,6 @@ class SafeWrapper extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-            automaticallyImplyLeading: false,
             title:  Text(title)
         ),
         body: Container(

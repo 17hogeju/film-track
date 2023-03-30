@@ -80,8 +80,10 @@ class DashboardController extends GetxController {
       } else {
         user.toWatchMovies.add(media.id);
       }
+      //update user count
       await _userRepo.updateUserRecord(user);
     }
+
   }
 
   addToWatchedList(MediaModel media, int rating) async {

@@ -1,4 +1,4 @@
-import 'package:filmtrack/src/common_widgets/navigation/authenticated_navigation_widget.dart';
+import 'package:filmtrack/src/common_widgets/navigation/bottom_navigation.dart';
 import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:filmtrack/src/repository/authentication_repository/exceptions/register_email_password_failure.dart';
 import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
@@ -21,7 +21,7 @@ class AuthenticationRepository extends GetxController {
   }
 
   _setInitialScreen(User? user) {
-    user == null ? Get.offAll(() => const WelcomeScreen()) : Get.offAll(() => const AuthenticatedNavigationWidget());
+    user == null ? Get.offAll(() => const WelcomeScreen()) : Get.offAll(() => const BottomNavigation());
   }
 
   Future<void> registerUserWithEmailAndPassword(String email, String password) async {
@@ -29,7 +29,7 @@ class AuthenticationRepository extends GetxController {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       if (firebaseUser.value != null) {
         UserRepository.instance.createUser(firebaseUser.value!.uid);
-        Get.offAll(() => const AuthenticatedNavigationWidget());
+        Get.offAll(() => const BottomNavigation());
       } else {
         Get.to(() => const WelcomeScreen());
       }
@@ -44,8 +44,12 @@ class AuthenticationRepository extends GetxController {
 
   Future<void> loginUserWithEmailAndPassword(String email, String password) async {
     await _auth.signInWithEmailAndPassword(email: email, password: password);
-    firebaseUser.value != null ? Get.offAll(() => const AuthenticatedNavigationWidget()) : Get.to(() => const WelcomeScreen());
-
+    if (firebaseUser.value != null) {
+      UserRepository.instance.createUser(firebaseUser.value!.uid);
+      Get.offAll(() => const BottomNavigation());
+    } else {
+      Get.to(() => const WelcomeScreen());
+    }
   }
 
   Future<void> logout() async => await _auth.signOut();
