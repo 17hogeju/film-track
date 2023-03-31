@@ -33,6 +33,8 @@ class UserModel {
   final List<dynamic> toWatchShows;
   final List<RatingModel> watchedMovies;
   final List<RatingModel> watchedShows;
+  int moviesTilRefresh;
+  int showsTilRefresh;
 
   UserModel(
       {required this.id,
@@ -44,7 +46,9 @@ class UserModel {
       this.toWatchMovies = const [],
       this.toWatchShows = const [],
       this.watchedMovies = const [],
-      this.watchedShows = const []});
+      this.watchedShows = const [],
+      this.moviesTilRefresh = 5,
+      this.showsTilRefresh = 5});
 
   toJson() {
     return {
@@ -56,7 +60,9 @@ class UserModel {
       "toWatchMovies": toWatchMovies,
       "toWatchShows": toWatchShows,
       "watchedMovies": watchedMovies.map((e) => e.toJson()),
-      "watchedShows": watchedShows.map((e) => e.toJson())
+      "watchedShows": watchedShows.map((e) => e.toJson()),
+      "moviesTilRefresh": moviesTilRefresh,
+      "showsTilRefresh": showsTilRefresh
     };
   }
 
@@ -81,6 +87,8 @@ class UserModel {
         toWatchMovies: data["toWatchMovies"],
         toWatchShows: data["toWatchShows"],
         watchedMovies: watchedMovies,
-        watchedShows: watchedShows);
+        watchedShows: watchedShows,
+        moviesTilRefresh: data['moviesTilRefresh'],
+        showsTilRefresh: data['showsTilRefresh']);
   }
 }

@@ -4,6 +4,8 @@ import 'package:filmtrack/src/repository/authentication_repository/authenticatio
 import 'package:filmtrack/src/repository/media_repository/media_repository.dart';
 import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
 import 'package:get/get.dart';
+import 'dart:convert';
+import 'package:http/http.dart' as http;
 
 class RecommendationsController extends GetxController {
   static RecommendationsController get instance => Get.find();
@@ -14,6 +16,24 @@ class RecommendationsController extends GetxController {
 
   final List movieRecommendations = [];
   final List showRecommendations = [];
+
+  getUserID() async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    return uid;
+  }
+
+  resetMediaCount(String mediaType) async {
+    final uid = _authRepo.firebaseUser.value?.uid;
+    if (uid != null) {
+      UserModel user = await _userRepo.getUserData(uid);
+      if (mediaType == "shows") {
+        user.showsTilRefresh = 5;
+      } else {
+        user.moviesTilRefresh = 5;
+      }
+      await _userRepo.updateUserRecord(user);
+    }
+  }
 
   getMediaRecommendations() async {
     final uid = _authRepo.firebaseUser.value?.uid;
@@ -38,21 +58,14 @@ class RecommendationsController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
         user.toWatchShows.add(media.id);
+        user.showsTilRefresh -= 1;
+        user.currShowRecs.remove(media.id);
+        user.pastShowRecs.add(media.id);
       } else {
         user.toWatchMovies.add(media.id);
-      }
-      await _userRepo.updateUserRecord(user);
-    }
-  }
-
-  removeFromToWatchList(MediaModel media) async {
-    final uid = _authRepo.firebaseUser.value?.uid;
-    if (uid != null) {
-      UserModel user = await _userRepo.getUserData(uid);
-      if (media.mediaType == "tv") {
-        user.toWatchShows.remove(media.id);
-      } else {
-        user.toWatchMovies.remove(media.id);
+        user.moviesTilRefresh -= 1;
+        user.currMovieRecs.remove(media.id);
+        user.pastMovieRecs.add(media.id);
       }
       await _userRepo.updateUserRecord(user);
     }
@@ -64,21 +77,61 @@ class RecommendationsController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
         user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
+        user.showsTilRefresh -= 1;
+        user.currShowRecs.remove(media.id);
+        user.pastShowRecs.add(media.id);
       } else {
         user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
+        user.moviesTilRefresh -= 1;
+        user.currMovieRecs.remove(media.id);
+        user.pastMovieRecs.add(media.id);
       }
       await _userRepo.updateUserRecord(user);
     }
   }
 
-  removeFromWatchedList(MediaModel media) async {
+  calculateRecommendations(String mediaType) async {
     final uid = _authRepo.firebaseUser.value?.uid;
+    const String url = 'https://filmtrack.loca.lt';
+    var indeces = [];
+    var pastRecs = [];
     if (uid != null) {
       UserModel user = await _userRepo.getUserData(uid);
-      if (media.mediaType == "tv") {
-        user.watchedShows.removeWhere((item) => item.mediaId == media.id);
-      } else {
-        user.watchedMovies.removeWhere((item) => item.mediaId == media.id);
+      for (var id in user.toWatchMovies) {
+        indeces.add(id);
+      }
+      for (RatingModel item in user.watchedMovies) {
+        indeces.add(item.mediaId);
+      }
+
+      Map<String, dynamic> data = {
+        'media_type': mediaType,
+        'data': indeces,
+        'past_recs': pastRecs,
+      };
+
+      String jsonData = json.encode(data);
+
+      Map<String, String> headers = {
+        'Content-Length': utf8.encode(jsonData).length.toString(),
+        'Content-Type': 'application/json',
+      };
+
+      try {
+        http.Response response = await http.post(
+          Uri.parse(url),
+          body: jsonData,
+          headers: headers,
+        );
+
+        var res = json.decode(response.body);
+        List<int> real_res =
+            List<int>.from(res['result'].map((x) => int.parse(x)));
+        user.currMovieRecs = real_res;
+
+        // print(res["result"]);
+      } catch (e) {
+        throw Exception('Request failed: $e');
       }
       await _userRepo.updateUserRecord(user);
     }

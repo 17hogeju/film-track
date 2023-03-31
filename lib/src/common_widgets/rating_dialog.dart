@@ -47,13 +47,13 @@ class _RatingDialogState extends State<RatingDialog> {
       ),
       actions: <Widget>[
         TextButton(
-          child: const Text(tOK),
+          child: const Text(tCANCEL),
           onPressed: () {
             Get.back();
           },
         ),
         TextButton(
-          child: const Text(tCANCEL),
+          child: const Text(tOK),
           onPressed: () {
             // Here you can handle the user's rating
             Get.back(result: _rating);

@@ -31,7 +31,6 @@ class _ConfirmDialogState extends State<ConfirmDialog> {
         TextButton(
           child: const Text(tOK),
           onPressed: () {
-            // Here you can handle the user's rating
             Get.back(result: "OK");
           },
         ),

@@ -29,6 +29,7 @@ const cardPaddingLeft = 10.0;
 const cardPaddingRight = 10.0;
 const cardPaddingBottom = 15.0;
 const buttonPaddingRight = 240.0;
+const noRecommendationsPaddingTop = 260.0;
 
 const titleWidthFactor = 1.6;
 const genreWidthFactor = 1.6;

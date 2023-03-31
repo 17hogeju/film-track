@@ -50,3 +50,6 @@ const String tShows = "Shows";
 const String tUntilRefresh = "until refresh: ";
 const String tConfirmAddTitle = "To Watch List";
 const String tConfirmAdd = "Add to your To Watch List?";
+
+const String tOK = "OK";
+const String tCANCEL = "CANCEL";

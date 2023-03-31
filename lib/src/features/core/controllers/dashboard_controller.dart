@@ -77,8 +77,18 @@ class DashboardController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
         user.toWatchShows.add(media.id);
+        user.showsTilRefresh -= 1;
+        if (user.showsTilRefresh == 0) {
+          user.showsTilRefresh = 5;
+          // refresh recs
+        }
       } else {
         user.toWatchMovies.add(media.id);
+        user.moviesTilRefresh -= 1;
+        if (user.moviesTilRefresh == 0) {
+          user.moviesTilRefresh = 5;
+          // refresh recs
+        }
       }
       await _userRepo.updateUserRecord(user);
     }
@@ -90,8 +100,18 @@ class DashboardController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
         user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
+        user.showsTilRefresh -= 1;
+        if (user.showsTilRefresh == 0) {
+          user.showsTilRefresh = 5;
+          // refresh recs
+        }
       } else {
         user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
+        user.moviesTilRefresh -= 1;
+        if (user.moviesTilRefresh == 0) {
+          user.moviesTilRefresh = 5;
+          // refresh recs
+        }
       }
       await _userRepo.updateUserRecord(user);
     }
@@ -111,7 +131,6 @@ class DashboardController extends GetxController {
         indeces.add(item.mediaId);
       }
 
-
       Map<String, dynamic> data = {
         'media_type': 'movie',
         'data': indeces,
@@ -121,13 +140,9 @@ class DashboardController extends GetxController {
       String jsonData = json.encode(data);
 
       Map<String, String> headers = {
-        'Content-Length': utf8
-            .encode(jsonData)
-            .length
-            .toString(),
+        'Content-Length': utf8.encode(jsonData).length.toString(),
         'Content-Type': 'application/json',
       };
-
 
       try {
         http.Response response = await http.post(
@@ -137,7 +152,8 @@ class DashboardController extends GetxController {
         );
 
         var res = json.decode(response.body);
-        List<int> real_res = List<int>.from(res['result'].map((x) => int.parse(x)));
+        List<int> real_res =
+            List<int>.from(res['result'].map((x) => int.parse(x)));
         user.currMovieRecs = real_res;
 
         // print(res["result"]);
@@ -147,7 +163,6 @@ class DashboardController extends GetxController {
       await _userRepo.updateUserRecord(user);
     }
   }
-
 
   Future<List<MediaModel>> getSearchResults(searchQuery) async {
     List<String> titles = [];
@@ -168,9 +183,7 @@ class DashboardController extends GetxController {
       }
       return res;
     } else {
-
       return [];
     }
-
   }
 }
