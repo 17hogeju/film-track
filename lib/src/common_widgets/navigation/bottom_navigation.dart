@@ -6,16 +6,14 @@ import 'package:filmtrack/src/features/core/screens/recommendations/recommendati
 import 'package:filmtrack/src/features/core/screens/subscriptions/subscriptions_screen.dart';
 import 'package:flutter/material.dart';
 
-class AuthenticatedNavigationWidget extends StatefulWidget {
-  const AuthenticatedNavigationWidget({Key? key}) : super(key: key);
+class BottomNavigation extends StatefulWidget {
+  const BottomNavigation({Key? key}) : super(key: key);
 
   @override
-  State<AuthenticatedNavigationWidget> createState() =>
-      _AuthenticatedNavigationWidgetState();
+  State<BottomNavigation> createState() => _BottomNavigationState();
 }
 
-class _AuthenticatedNavigationWidgetState
-    extends State<AuthenticatedNavigationWidget> {
+class _BottomNavigationState extends State<BottomNavigation> {
   int _selectedIndex = 0;
   static const List<String> _navigationOptions = [
     tHome,

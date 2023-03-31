@@ -10,32 +10,40 @@ class SubscriptionsScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final controller = Get.put(SubscriptionController());
-    return Column(children: [
-      // const SizedBox(width: tDefaultSize * 5),
-      FutureBuilder(
-        future: controller.getSubscriptionRecommendations(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return const Center(child: Text('loading...'));
+
+    return FutureBuilder(
+      future: controller.getSubscriptionRecommendations(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return const Center(child: CircularProgressIndicator());
+        } else {
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else {
-              return Center(child: Column(
-                children: [
-                  const Text('Based on Your Watched List'),
-                  const SizedBox(height: tDefaultSize),
-                  SubCarousel(recommendations: controller.watchedRecommendations),
-                  const SizedBox(height: tDefaultSizeDouble,),
-                  const Text('Based on Your To Watch List'),
-                  const SizedBox(height: tDefaultSize),
-                  SubCarousel(recommendations: controller.toWatchRecommendations),
-                ]
-              ));
-            }
+            return Center(
+                child: Column(
+                    children: [
+                      Text(
+                        'Based on Your Watched List',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(height: tDefaultSize),
+                      SubCarousel(recommendations: controller.watchedRecommendations),
+                      const SizedBox(
+                        height: tDefaultSizeDouble,
+                      ),
+                      Text(
+                        'Based on Your To Watch List',
+                        style: Theme.of(context).textTheme.headlineSmall,
+                      ),
+                      const SizedBox(height: tDefaultSize),
+                      SubCarousel(recommendations: controller.toWatchRecommendations),
+                  ]
+                )
+            );
           }
-        },
-      )
-    ]);
+        }
+      },
+    );
   }
 }

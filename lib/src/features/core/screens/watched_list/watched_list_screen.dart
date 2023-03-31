@@ -21,7 +21,7 @@ class WatchedListScreen extends StatelessWidget {
             future: controller.getToWatchList(),
             builder: (context, snapshot) {
               if (snapshot.connectionState == ConnectionState.waiting) {
-                return const Center(child: Text('loading...'));
+                return const Center(child: CircularProgressIndicator());
               } else {
                 if (snapshot.hasError) {
                   return Center(child: Text('Error: ${snapshot.error}'));

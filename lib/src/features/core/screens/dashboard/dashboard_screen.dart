@@ -107,8 +107,7 @@ class DashboardScreen extends StatefulWidget {
                   builder: (context, snapshot) {
                     if (snapshot.connectionState ==
                         ConnectionState.waiting) {
-                      return Text("Loading...",style:
-                      Theme.of(context).textTheme.bodySmall);
+                      return const Center(child: CircularProgressIndicator());
                     } else {
                       if (snapshot.hasError) {
                         return Text('Error: ${snapshot.error}', style:
@@ -123,7 +122,7 @@ class DashboardScreen extends StatefulWidget {
                           }
                           return Align(alignment: Alignment.topCenter, child: Column(children: searchResults));
                         } else {
-                          return Text('No results');
+                          return const Center(child: Text('No Results'));
                         }
                       }
                     }

@@ -1,5 +1,4 @@
 import 'package:filmtrack/firebase_options.dart';
-import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:filmtrack/src/repository/authentication_repository/authentication_repository.dart';
 import 'package:filmtrack/src/utils/theme/theme.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -25,7 +24,7 @@ class App extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       defaultTransition: Transition.rightToLeftWithFade,
       transitionDuration: const Duration(milliseconds: 500),
-      home: const WelcomeScreen(),
+      home: const Scaffold(body: Center(child: CircularProgressIndicator())),
     );
   }
 }

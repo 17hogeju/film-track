@@ -61,31 +61,28 @@ class _RecommendationScreenState extends State<RecommendationScreen> {
   @override
   Widget build(BuildContext context) {
     return SingleChildScrollView(
-        child: Column(children: [
-      const SizedBox(width: tDefaultSize * 5),
-      FutureBuilder(
-        future: controller.getMediaRecommendations(),
-        builder: (context, snapshot) {
-          if (snapshot.connectionState == ConnectionState.waiting) {
-            return Column(children: const [
-              Padding(padding: EdgeInsets.only(top: 260)),
-              Center(child: Text('loading...'))
-            ]);
+        child: FutureBuilder(
+      future: controller.getMediaRecommendations(),
+      builder: (context, snapshot) {
+        if (snapshot.connectionState == ConnectionState.waiting) {
+          return Column(children: const [
+            Padding(padding: EdgeInsets.only(top: 260)),
+            Center(child: CircularProgressIndicator())
+          ]);
+        } else {
+          if (snapshot.hasError) {
+            return Center(child: Text('Error: ${snapshot.error}'));
           } else {
-            if (snapshot.hasError) {
-              return Center(child: Text('Error: ${snapshot.error}'));
-            } else {
-              return MediaToggleWidget(
-                  moviesWidget: CarouselAndCard(
-                      mediaList: controller.movieRecommendations,
-                      mediaType: "movies"),
-                  showsWidget: CarouselAndCard(
-                      mediaList: controller.showRecommendations,
-                      mediaType: "shows"));
-            }
+            return MediaToggleWidget(
+                moviesWidget: CarouselAndCard(
+                    mediaList: controller.movieRecommendations,
+                    mediaType: "movies"),
+                showsWidget: CarouselAndCard(
+                    mediaList: controller.showRecommendations,
+                    mediaType: "shows"));
           }
-        },
-      )
-    ]));
+        }
+      },
+    ));
   }
 }

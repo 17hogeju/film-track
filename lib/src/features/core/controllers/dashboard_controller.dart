@@ -90,8 +90,10 @@ class DashboardController extends GetxController {
           // refresh recs
         }
       }
+      //update user count
       await _userRepo.updateUserRecord(user);
     }
+
   }
 
   addToWatchedList(MediaModel media, int rating) async {

@@ -1,4 +1,4 @@
-import 'package:filmtrack/src/common_widgets/navigation/authenticated_navigation_widget.dart';
+import 'package:filmtrack/src/common_widgets/navigation/bottom_navigation.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/constants/text_strings.dart';
 import 'package:filmtrack/src/features/authentication/controllers/register_controller.dart';
