@@ -46,6 +46,6 @@ const String tDeleteAccount = "DeleteAccount";
 // -- To Watch List Text
 const String tMovies = "Movies";
 const String tShows = "Shows";
-const String tUntilRefresh = "until refresh: ";
+const String tUntilRefresh = "needed for refresh: ";
 
 

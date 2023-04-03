@@ -6,8 +6,6 @@ import 'package:filmtrack/src/repository/media_repository/media_repository.dart'
 import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
-import 'dart:convert';
-import 'package:http/http.dart' as http;
 
 class DashboardController extends GetxController {
   static DashboardController get instance => Get.find();
@@ -98,58 +96,6 @@ class DashboardController extends GetxController {
       await _userRepo.updateUserRecord(user);
     }
   }
-
-  calculateRecommendations() async {
-    final uid = _authRepo.firebaseUser.value?.uid;
-    const String url = 'https://filmtrack.loca.lt';
-    var indeces = [];
-    var pastRecs = [];
-    if (uid != null) {
-      UserModel user = await _userRepo.getUserData(uid);
-      for (var id in user.toWatchMovies) {
-        indeces.add(id);
-      }
-      for (RatingModel item in user.watchedMovies) {
-        indeces.add(item.mediaId);
-      }
-
-
-      Map<String, dynamic> data = {
-        'media_type': 'movie',
-        'data': indeces,
-        'past_recs': pastRecs,
-      };
-
-      String jsonData = json.encode(data);
-
-      Map<String, String> headers = {
-        'Content-Length': utf8
-            .encode(jsonData)
-            .length
-            .toString(),
-        'Content-Type': 'application/json',
-      };
-
-
-      try {
-        http.Response response = await http.post(
-          Uri.parse(url),
-          body: jsonData,
-          headers: headers,
-        );
-
-        var res = json.decode(response.body);
-        List<int> real_res = List<int>.from(res['result'].map((x) => int.parse(x)));
-        user.currMovieRecs = real_res;
-
-        // print(res["result"]);
-      } catch (e) {
-        throw Exception('Request failed: $e');
-      }
-      await _userRepo.updateUserRecord(user);
-    }
-  }
-
 
   Future<List<MediaModel>> getSearchResults(searchQuery) async {
     List<String> titles = [];

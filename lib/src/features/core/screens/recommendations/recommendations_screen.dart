@@ -4,14 +4,52 @@ import 'package:filmtrack/src/features/core/screens/recommendations/carousel_and
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class RecommendationScreen extends StatelessWidget {
+class RecommendationScreen extends StatefulWidget {
   const RecommendationScreen({Key? key}) : super(key: key);
 
   @override
+  State<RecommendationScreen> createState() => _RecommendationScreenState();
+}
+
+class _RecommendationScreenState extends State<RecommendationScreen> {
+  late Future<dynamic> _futureData;
+  final controller = Get.put(RecommendationsController());
+
+  @override
+  void initState() {
+    super.initState();
+    _futureData = controller.getMediaRecommendations();
+    controller.snackbarFunction = _showSnackBar;
+    controller.refreshFunction = _refreshData;
+  }
+
+  _showSnackBar(String text) {
+    final snackBar = SnackBar(
+      content: Text(text),
+      duration: Duration(seconds: 2),
+      action: SnackBarAction(
+        label: 'DISMISS',
+        onPressed: () {
+          ScaffoldMessenger.of(context).hideCurrentSnackBar();
+        },
+      ),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void _refreshData() {
+    setState(() {
+      _futureData = controller.getMediaRecommendations();
+    });
+  }
+
+
+  @override
   Widget build(BuildContext context) {
-    final controller = Get.put(RecommendationsController());
+
     return FutureBuilder(
-      future: controller.getMediaRecommendations(),
+      future: _futureData,
       builder: (context, snapshot) {
         if (snapshot.connectionState == ConnectionState.waiting) {
           return const Center(child: CircularProgressIndicator());

@@ -39,7 +39,6 @@ class DashboardScreen extends StatefulWidget {
                 controller: controller.searchText,
                 onSubmitted: (value) {
                   setState(() {
-                    // controller.calculateRecommendations();
                     _searchText = value.trim();
                     _showResults = value.isNotEmpty;
                   });

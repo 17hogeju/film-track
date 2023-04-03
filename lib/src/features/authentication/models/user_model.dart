@@ -24,7 +24,6 @@ class RatingModel {
 
 class UserModel {
   final String id;
-  final List<dynamic> disliked;
   final List<dynamic> pastMovieRecs;
   final List<dynamic> pastShowRecs;
   List<dynamic> currMovieRecs;
@@ -33,10 +32,12 @@ class UserModel {
   final List<dynamic> toWatchShows;
   final List<RatingModel> watchedMovies;
   final List<RatingModel> watchedShows;
+  int moviesTillRefresh;
+  int showsTillRefresh;
+
 
   UserModel({
     required this.id,
-    this.disliked = const [],
     this.pastMovieRecs = const [],
     this.pastShowRecs = const [],
     this.currMovieRecs = const [],
@@ -44,12 +45,13 @@ class UserModel {
     this.toWatchMovies = const [],
     this.toWatchShows = const [],
     this.watchedMovies = const [],
-    this.watchedShows = const []
+    this.watchedShows = const [],
+    this.moviesTillRefresh = 5,
+    this.showsTillRefresh = 5,
 });
 
   toJson() {
     return {
-      "disliked": disliked,
       "pastMovieRecs": pastMovieRecs,
       "pastShowRecs": pastShowRecs,
       "currMovieRecs": currMovieRecs,
@@ -57,7 +59,9 @@ class UserModel {
       "toWatchMovies": toWatchMovies,
       "toWatchShows": toWatchShows,
       "watchedMovies": watchedMovies.map((e) => e.toJson()),
-      "watchedShows": watchedShows.map((e) => e.toJson())
+      "watchedShows": watchedShows.map((e) => e.toJson()),
+      "moviesTillRefresh": moviesTillRefresh,
+      "showsTillRefresh": showsTillRefresh
     };
   }
 
@@ -74,7 +78,6 @@ class UserModel {
         .toList();
     return UserModel(
         id: document.id,
-        disliked: data["disliked"],
         pastMovieRecs: data["pastMovieRecs"],
         pastShowRecs: data["pastShowRecs"],
         currMovieRecs: data["currMovieRecs"],
@@ -82,6 +85,8 @@ class UserModel {
         toWatchMovies: data["toWatchMovies"],
         toWatchShows: data["toWatchShows"],
         watchedMovies: watchedMovies,
-        watchedShows: watchedShows);
+        watchedShows: watchedShows,
+        moviesTillRefresh: data["moviesTillRefresh"],
+        showsTillRefresh: data["showsTillRefresh"]);
   }
 }
