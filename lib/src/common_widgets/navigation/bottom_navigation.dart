@@ -40,7 +40,7 @@ class _BottomNavigationState extends State<BottomNavigation> {
                 width: constraints.maxWidth,
                 height: constraints.maxHeight,
                 color: tCardBgColor,
-                padding: const EdgeInsets.all(tDefaultSize),
+                padding: const EdgeInsets.fromLTRB(tDefaultSize,tDefaultSize,tDefaultSize,0.0),
                 child:  _navigationScreens.elementAt(_selectedIndex)
               );
             },

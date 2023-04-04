@@ -140,7 +140,7 @@ class RecommendationsController extends GetxController {
   }
 
   Future<List<dynamic>> calculateRecommendations(List<dynamic> toWatch, List<dynamic> watched, List<dynamic> pastRecs, String mediaType) async {
-    const String url = 'https://filmtrack.loca.lt';
+    const String url = 'http://192.168.0.11:8000';
     var indeces = [];
     var resultList = [];
     for (var id in toWatch) {

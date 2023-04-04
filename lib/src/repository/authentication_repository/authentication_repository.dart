@@ -1,4 +1,5 @@
 import 'package:filmtrack/src/common_widgets/navigation/bottom_navigation.dart';
+import 'package:filmtrack/src/features/authentication/models/user_model.dart';
 import 'package:filmtrack/src/features/authentication/screens/welcome/welcome_screen.dart';
 import 'package:filmtrack/src/repository/authentication_repository/exceptions/register_email_password_failure.dart';
 import 'package:filmtrack/src/repository/user_repository/user_repository.dart';
@@ -11,6 +12,8 @@ class AuthenticationRepository extends GetxController {
   // Variables
   final _auth = FirebaseAuth.instance;
   late final Rx<User?> firebaseUser;
+
+  final _userRepo = Get.put(UserRepository());
 
   @override
   void onReady() {
@@ -28,7 +31,7 @@ class AuthenticationRepository extends GetxController {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       if (firebaseUser.value != null) {
-        UserRepository.instance.createUser(firebaseUser.value!.uid);
+        _userRepo.createUser(firebaseUser.value!.uid);
         Get.offAll(() => const BottomNavigation());
       } else {
         Get.to(() => const WelcomeScreen());

@@ -22,6 +22,39 @@ class DashboardScreen extends StatefulWidget {
    bool _showResults = false;
    final controller = Get.put(DashboardController());
    final GlobalKey _key = GlobalKey();
+   late Future<dynamic> _futureData;
+
+   @override
+   void initState() {
+     super.initState();
+     setState(() {
+       _futureData = controller.getSearchResults(_searchText);
+       controller.snackbarFunction = _showSnackBar;
+       controller.refreshFunction = _refreshData;
+     });
+   }
+
+   void _refreshData() {
+     setState(() {
+       _futureData = controller.getSearchResults(_searchText);
+     });
+   }
+
+   _showSnackBar(String text) {
+     final snackBar = SnackBar(
+       content: Text(text),
+       duration: Duration(seconds: 2),
+       action: SnackBarAction(
+         label: 'DISMISS',
+         onPressed: () {
+           ScaffoldMessenger.of(context).hideCurrentSnackBar();
+         },
+       ),
+     );
+
+     ScaffoldMessenger.of(context).showSnackBar(snackBar);
+   }
+
 
    double _getYPosition() {
      final RenderBox renderBox = _key.currentContext?.findRenderObject() as RenderBox;
@@ -39,8 +72,9 @@ class DashboardScreen extends StatefulWidget {
                 controller: controller.searchText,
                 onSubmitted: (value) {
                   setState(() {
-                    _searchText = value.trim();
+                    _searchText = value.toLowerCase().trim();
                     _showResults = value.isNotEmpty;
+                    _refreshData();
                   });
                 },
                 decoration: InputDecoration(
@@ -102,7 +136,7 @@ class DashboardScreen extends StatefulWidget {
             ),
             child: SingleChildScrollView(
               child: FutureBuilder(
-                  future: controller.getSearchResults(_searchText),
+                  future: _futureData,
                   builder: (context, snapshot) {
                     if (snapshot.connectionState ==
                         ConnectionState.waiting) {
