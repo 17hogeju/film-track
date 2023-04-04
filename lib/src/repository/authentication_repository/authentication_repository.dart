@@ -27,7 +27,7 @@ class AuthenticationRepository extends GetxController {
     user == null ? Get.offAll(() => const WelcomeScreen()) : Get.offAll(() => const BottomNavigation());
   }
 
-  Future<void> registerUserWithEmailAndPassword(String email, String password) async {
+  Future<String?> registerUserWithEmailAndPassword(String email, String password) async {
     try {
       await _auth.createUserWithEmailAndPassword(email: email, password: password);
       if (firebaseUser.value != null) {
@@ -36,9 +36,22 @@ class AuthenticationRepository extends GetxController {
       } else {
         Get.to(() => const WelcomeScreen());
       }
+      return null;
     } on FirebaseAuthException catch(e) {
-      final ex = RegisterWithEmailAndPasswordFailure.code(e.code);
-      throw ex;
+      switch(e.code) {
+        case 'weak-password':
+          return 'Please enter a stronger password.';
+        case 'invalid-email':
+          return 'Email is not valid or poorly formatted.';
+        case 'email-already-in-use':
+          return 'An account already exists for that email.';
+        case 'operation-not-allowed':
+          return 'Operation is not allowed. Please contact support.';
+        case 'user-disabled':
+          return 'This user has been disabled. Please contact support for help.';
+        default:
+          return 'Unknown error occurred';
+      }
     } catch (_) {
       const ex = RegisterWithEmailAndPasswordFailure();
       throw ex;

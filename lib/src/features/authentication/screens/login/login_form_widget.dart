@@ -6,16 +6,28 @@ import 'package:filmtrack/src/features/authentication/screens/forgot_password/fo
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class LoginForm extends StatelessWidget {
+class LoginForm extends StatefulWidget {
   const LoginForm({
     super.key,
   });
 
   @override
-  Widget build(BuildContext context) {
-    final controller = Get.put(RegisterController());
-    final _formKey = GlobalKey<FormState>();
+  State<LoginForm> createState() => _LoginFormState();
+}
 
+class _LoginFormState extends State<LoginForm> {
+  final controller = Get.put(RegisterController());
+  final _formKey = GlobalKey<FormState>();
+  bool obscure = true;
+
+  void toggleObscure() {
+    setState(() {
+      obscure = !obscure;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
     return Form(
         key: _formKey,
         child: Container(
@@ -29,15 +41,35 @@ class LoginForm extends StatelessWidget {
                     label: Text(tEmail),
                     prefixIcon: Icon(Icons.mail_rounded),
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter an email';
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 const SizedBox(height: tFormHeight),
                 TextFormField(
                   controller: controller.password,
-                  decoration: const InputDecoration(
-                      label: Text(tPassword),
-                      prefixIcon: Icon(Icons.lock_rounded),
-                      suffixIcon: IconButton(onPressed: null, icon: Icon(Icons.remove_red_eye_rounded)),
+                  obscureText: obscure,
+                  decoration: InputDecoration(
+                    label: const Text(tPassword),
+                    prefixIcon: const Icon(Icons.lock_rounded),
+                    suffixIcon: IconButton(
+                        onPressed: toggleObscure,
+                        icon: Icon(
+                            obscure ? Icons.visibility : Icons.visibility_off)),
                   ),
+                  validator: (value) {
+                    if (value!.isEmpty) {
+                      return 'Please enter a password';
+                    } else if (value.length < 6) {
+                      return 'Password must be at least 6 characters long';
+                    } else {
+                      return null;
+                    }
+                  },
                 ),
                 const SizedBox(height: tFormHeight),
 
@@ -45,11 +77,10 @@ class LoginForm extends StatelessWidget {
                 Align(
                   alignment: Alignment.centerRight,
                   child: TextButton(
-                      onPressed: (){
+                      onPressed: () {
                         Get.to(() => const ForgotPasswordScreen());
                       },
-                      child: const Text(tForgotPassword)
-                  ),
+                      child: const Text(tForgotPassword)),
                 ),
                 const SizedBox(height: tFormHeight),
 
@@ -57,17 +88,15 @@ class LoginForm extends StatelessWidget {
                 SizedBox(
                     width: double.infinity,
                     child: ElevatedButton(
-                        onPressed: (){
-                          if(_formKey.currentState!.validate()) {
-                            RegisterController.instance.loginUser(controller.email.text.trim(), controller.password.text.trim());
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            RegisterController.instance.loginUser(
+                                controller.email.text.trim(),
+                                controller.password.text.trim());
                           }
                         },
-                        child: Text(tLogin.toUpperCase())
-                    )
-                )
+                        child: Text(tLogin.toUpperCase())))
               ],
-            )
-        )
-    );
+            )));
   }
 }

@@ -44,14 +44,7 @@ class DashboardScreen extends StatefulWidget {
      final snackBar = SnackBar(
        content: Text(text),
        duration: Duration(seconds: 2),
-       action: SnackBarAction(
-         label: 'DISMISS',
-         onPressed: () {
-           ScaffoldMessenger.of(context).hideCurrentSnackBar();
-         },
-       ),
      );
-
      ScaffoldMessenger.of(context).showSnackBar(snackBar);
    }
 

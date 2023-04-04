@@ -18,7 +18,7 @@ class SubscriptionsScreen extends StatelessWidget {
           return const Center(child: CircularProgressIndicator());
         } else {
           if (snapshot.hasError) {
-            return Center(child: Text('Error: ${snapshot.error}'));
+            return const Center(child: Text('Add media to get subscription recommendations'));
           } else {
             return Center(
                 child: Column(

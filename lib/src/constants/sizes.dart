@@ -18,4 +18,4 @@ const tPaddingTop = 52.0;
 
 const tMinHeight = 220.0;
 
-const tListItemHeight = 60.0;
+const tListItemHeight = 70.0;

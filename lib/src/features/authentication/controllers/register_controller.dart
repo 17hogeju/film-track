@@ -11,9 +11,13 @@ class RegisterController extends GetxController {
   final password = TextEditingController();
   final confirmPassword = TextEditingController();
   final _authRepo = Get.put(AuthenticationRepository());
+  late Function(String) snackbarFunction;
 
   void registerUser(String email, String password) async {
-    _authRepo.registerUserWithEmailAndPassword(email, password);
+    String? e = await _authRepo.registerUserWithEmailAndPassword(email, password);
+    if (e!.isNotEmpty){
+      snackbarFunction(e);
+    }
   }
 
   void loginUser(String email, String password) {

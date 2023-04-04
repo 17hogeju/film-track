@@ -65,6 +65,10 @@ class _ToWatchListItemState extends State<ToWatchListItem> {
                           widget.mediaItem.genres,
                           style: Theme.of(context).textTheme.bodySmall,
                         ),
+                        Text(
+                          widget.mediaItem.providerNames,
+                          style: Theme.of(context).textTheme.bodySmall,
+                        ),
                       ],
                   ),
                 ),

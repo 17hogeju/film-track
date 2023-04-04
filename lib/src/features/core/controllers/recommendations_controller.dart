@@ -36,19 +36,6 @@ class RecommendationsController extends GetxController {
     }
   }
 
-  addToWatchList(MediaModel media) async {
-    final uid = _authRepo.firebaseUser.value?.uid;
-    if (uid != null) {
-      UserModel user = await _userRepo.getUserData(uid);
-      if (media.mediaType == "tv") {
-        user.toWatchShows.add(media.id);
-      } else {
-        user.toWatchMovies.add(media.id);
-      }
-      await _userRepo.updateUserRecord(user);
-    }
-  }
-
   addToWatchListRec(MediaModel media, int index) async {
     final uid = _authRepo.firebaseUser.value?.uid;
     String snackText = "";
@@ -63,7 +50,6 @@ class RecommendationsController extends GetxController {
           user.showsTillRefresh = 5;
           user.pastShowRecs.addAll(user.currShowRecs);
           snackText = "Added show and refreshed recommendations";
-          // dialog tells user there are new recs maybe with refresh button
         } else {
           snackText = "Added show: Add ${user.showsTillRefresh} more to refresh recommendations";
         }
@@ -84,19 +70,6 @@ class RecommendationsController extends GetxController {
       snackbarFunction(snackText);
       await _userRepo.updateUserRecord(user);
       refreshFunction();
-    }
-  }
-
-  addToWatchedList(MediaModel media, int rating) async {
-    final uid = _authRepo.firebaseUser.value?.uid;
-    if (uid != null) {
-      UserModel user = await _userRepo.getUserData(uid);
-      if (media.mediaType == "tv") {
-        user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
-      } else {
-        user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
-      }
-      await _userRepo.updateUserRecord(user);
     }
   }
 

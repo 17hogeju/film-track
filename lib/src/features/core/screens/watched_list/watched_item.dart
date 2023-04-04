@@ -1,4 +1,3 @@
-import 'package:filmtrack/src/common_widgets/my_icon_button.dart';
 import 'package:filmtrack/src/constants/colors.dart';
 import 'package:filmtrack/src/constants/sizes.dart';
 import 'package:filmtrack/src/features/core/models/media_model.dart';
@@ -56,6 +55,10 @@ class WatchedListItem extends StatelessWidget {
                       ),
                       Text(
                         mediaItem.genres,
+                        style: Theme.of(context).textTheme.bodySmall,
+                      ),
+                      Text(
+                        mediaItem.providerNames,
                         style: Theme.of(context).textTheme.bodySmall,
                       ),
                     ],

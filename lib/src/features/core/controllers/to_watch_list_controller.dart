@@ -15,6 +15,9 @@ class ToWatchListController extends GetxController {
   final List toWatchMovies = [];
   final List toWatchShows = [];
 
+  late Function(String) snackbarFunction;
+  late Function() refreshFunction;
+
   getToWatchList() async {
     final uid = _authRepo.firebaseUser.value?.uid;
     if (uid != null) {
@@ -34,16 +37,21 @@ class ToWatchListController extends GetxController {
 
   addToWatchedList(MediaModel media, int rating) async {
     final uid = _authRepo.firebaseUser.value?.uid;
+    String snackText = "";
     if (uid != null) {
       UserModel user = await _userRepo.getUserData(uid);
       if (media.mediaType == "tv") {
         user.toWatchShows.remove(media.id);
         user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
+        snackText = "Added show to watched list";
       } else {
         user.toWatchMovies.remove(media.id);
         user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
+        snackText = "Added movie to watched list";
       }
+      snackbarFunction(snackText);
       await _userRepo.updateUserRecord(user);
+      refreshFunction();
     }
   }
 }

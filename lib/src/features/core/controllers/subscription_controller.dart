@@ -23,7 +23,12 @@ class SubscriptionController extends GetxController {
       UserModel user = await _userRepo.getUserData(uid);
       toWatchRecommendations.clear();
       watchedRecommendations.clear();
-      print("we in");
+      if (user.toWatchShows.isEmpty && user.toWatchMovies.isEmpty) {
+        return;
+      }
+      if (user.watchedShows.isEmpty && user.watchedMovies.isEmpty) {
+        return;
+      }
 
       // Combine lists
       Map<int, int> toWatchCountMap = {};

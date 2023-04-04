@@ -10,6 +10,7 @@ class RegisterWithEmailAndPasswordFailure {
       case 'invalid-email':
         return const RegisterWithEmailAndPasswordFailure('Email is not valid or poorly formatted.');
       case 'email-already-in-use':
+        print("hey");
         return const RegisterWithEmailAndPasswordFailure('An account already exists for that email.');
       case 'operation-not-allowed':
         return const RegisterWithEmailAndPasswordFailure('Operation is not allowed. Please contact support.');

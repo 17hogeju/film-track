@@ -8,16 +8,46 @@ import 'package:filmtrack/src/features/core/screens/to_watch_list/to_watch_item.
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class ToWatchListScreen extends StatelessWidget {
+class ToWatchListScreen extends StatefulWidget {
   ToWatchListScreen({Key? key}) : super(key: key);
+
+  @override
+  State<ToWatchListScreen> createState() => _ToWatchListScreenState();
+}
+
+class _ToWatchListScreenState extends State<ToWatchListScreen> {
   final controller = Get.put(ToWatchListController());
+  late Future<dynamic> _futureData;
+
+  @override
+  void initState() {
+    super.initState();
+    _futureData = controller.getToWatchList();
+    controller.snackbarFunction = _showSnackBar;
+    controller.refreshFunction = _refreshData;
+  }
+
+  _showSnackBar(String text) {
+    final snackBar = SnackBar(
+      content: Text(text),
+      duration: Duration(seconds: 2),
+    );
+
+    ScaffoldMessenger.of(context).showSnackBar(snackBar);
+  }
+
+  void _refreshData() {
+    setState(() {
+      _futureData = controller.getToWatchList();
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
     return SafeWrapper(
         title: tToWatchList,
         child: FutureBuilder(
-          future: controller.getToWatchList(),
+          future: _futureData,
           builder: (context, snapshot) {
             if (snapshot.connectionState == ConnectionState.waiting) {
               return const Center(child: CircularProgressIndicator());
@@ -78,7 +108,7 @@ class MediaWrapper extends StatelessWidget {
         ),
         width: double.infinity,
         constraints: BoxConstraints(
-          minHeight: MediaQuery.of(context).size.height - tMinHeight,
+          minHeight: MediaQuery.of(context).size.height,
         ),
         child: child,
     );
