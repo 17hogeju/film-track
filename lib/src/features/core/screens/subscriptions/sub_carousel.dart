@@ -4,10 +4,10 @@ import 'package:filmtrack/src/features/core/screens/recommendations/indicators.d
 import 'package:flutter/material.dart';
 
 class SubCarousel extends StatefulWidget {
-  const SubCarousel({Key? key, required this.recommendations}) : super(key: key);
+  const SubCarousel({Key? key, required this.recommendations})
+      : super(key: key);
 
   final List<ProviderModel> recommendations;
-
 
   @override
   State<SubCarousel> createState() => _SubCarouselState();
@@ -57,27 +57,52 @@ class _SubCarouselState extends State<SubCarousel> {
             width: width,
             height: 200,
             child: PageView.builder(
-                itemCount: widget.recommendations.length,
-                pageSnapping: true,
-                controller: pageController,
-                onPageChanged: (page) {
-                  setState(() {
-                    activePage = page;
-                  });
-                },
-                itemBuilder: (context, pagePosition) {
-                  return Container(
-                      decoration: BoxDecoration(color: Colors.white,
-                        borderRadius: BorderRadius.circular(tDefaultSize)
+              itemCount: widget.recommendations.length,
+              pageSnapping: true,
+              controller: pageController,
+              onPageChanged: (page) {
+                setState(() {
+                  activePage = page;
+                });
+              },
+              itemBuilder: (context, pagePosition) {
+                return Stack(
+                  children: [
+                    Container(
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(tDefaultSize),
                       ),
                       margin: const EdgeInsets.all(30),
                       alignment: Alignment.topCenter,
-                      child: images[pagePosition]);
-                })),
-        Indicators(totalNum: widget.recommendations.length, currIndex: activePage),
+                      child: images[pagePosition],
+                    ),
+                    Positioned(
+                      bottom: 5,
+                      left: 0,
+                      right: 0,
+                      child: Center(
+                          child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            widget.recommendations[pagePosition].name,
+                            textAlign: TextAlign.center,
+                            style: const TextStyle(
+                              fontSize: 18,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )),
+                    ),
+                  ],
+                );
+              },
+            )),
+        Indicators(
+            totalNum: widget.recommendations.length, currIndex: activePage),
       ],
     );
   }
 }
-
-
