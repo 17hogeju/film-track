@@ -109,19 +109,6 @@ class DashboardController extends GetxController {
     }
   }
 
-  // addToWatchedList(MediaModel media, int rating) async {
-  //   final uid = _authRepo.firebaseUser.value?.uid;
-  //   if (uid != null) {
-  //     UserModel user = await _userRepo.getUserData(uid);
-  //     if (media.mediaType == "tv") {
-  //       user.watchedShows.add(RatingModel(mediaId: media.id, rating: rating));
-  //     } else {
-  //       user.watchedMovies.add(RatingModel(mediaId: media.id, rating: rating));
-  //     }
-  //     await _userRepo.updateUserRecord(user);
-  //   }
-  // }
-
   addToWatchedList(MediaModel media, int rating) async {
     final uid = _authRepo.firebaseUser.value?.uid;
     String snackText = "";
@@ -171,9 +158,11 @@ class DashboardController extends GetxController {
     }
     if (titles.isNotEmpty && titles != null) {
       for (var titleL in titles) {
-        final mediaData = await _mediaRepo.getMediaDataByTitleL(titleL);
-        if (mediaData != null) {
-          res.add(mediaData);
+        List<MediaModel?> mediaData = await _mediaRepo.getMediaDataByTitleL(titleL);
+        if (mediaData.isNotEmpty) {
+          for (MediaModel? item in mediaData){
+            res.add(item!);
+          }
         }
       }
       return res;
@@ -186,7 +175,7 @@ class DashboardController extends GetxController {
 
 
   Future<List<dynamic>> calculateRecommendations(List<dynamic> toWatch, List<dynamic> watched, List<dynamic> pastRecs, String mediaType) async {
-    const String url = 'http://192.168.0.11:8000';
+    const String url = 'http://192.168.200.226:8000';
     var indeces = [];
     var resultList = [];
     for (var id in toWatch) {

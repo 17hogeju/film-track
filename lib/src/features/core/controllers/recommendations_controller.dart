@@ -113,7 +113,7 @@ class RecommendationsController extends GetxController {
   }
 
   Future<List<dynamic>> calculateRecommendations(List<dynamic> toWatch, List<dynamic> watched, List<dynamic> pastRecs, String mediaType) async {
-    const String url = 'http://192.168.0.11:8000';
+    const String url = 'http://192.168.200.226:8000';
     var indeces = [];
     var resultList = [];
     for (var id in toWatch) {
