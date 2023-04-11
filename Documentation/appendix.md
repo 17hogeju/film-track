@@ -5,10 +5,6 @@ Media data is sourced from datasets on The Movie Database API (TMDB). The data c
 - [TMDB API](https://developers.themoviedb.org/3/getting-started/introduction)
 - [FilmTrackModel](https://github.com/17hogeju/FilmTrackModel)
 
-## UI Design
-UI Wireframes were designed using Figma
-- [FilmTrack Wireframes](https://www.figma.com/proto/80S9cQzy83fGzNvvTRJonb/Final-Wireframes?node-id=110-10288&scaling=min-zoom&page-id=0%3A1&starting-point-node-id=110%3A10288)
-
 ## Effort Summary
 _In hours_
 
@@ -33,3 +29,20 @@ _In hours_
 | Meetings (12 meetings) 1.5h each                     | 18     | 18     | 18     |
 | Class Assignment Documentation                       | 15     | 15     | 15     |
 | **Total**                                            | **75** | **65** | **51** |
+
+## Other Documents
+### User Stories and Design Diagrams
+- [User Stories](https://github.com/17hogeju/film-track/blob/main/Documentation/user_stories.md)
+- [Design Diagrams with Descriptions](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/diagram_descriptions.md)
+    - [Level 0](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D0.jpg)
+    - [Level 1](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D1.jpg)
+    - [Level 2](https://github.com/17hogeju/film-track/blob/main/Documentation/Design_Diagrams/FilmTrack_D2.jpg)
+
+### Project Tasks and Timeline
+- [Task List](https://github.com/17hogeju/film-track/blob/main/Documentation/tasklist.md)
+- [Timeline and Effort Matrix](https://github.com/17hogeju/film-track/blob/main/Documentation/milestones_timeline_effort.md)
+
+### Professional Biographies
+- [Julia Hoge](https://github.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Julia-Hoge.md)
+- [Sidath Marapane](https://github.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Sidath-Marapane.md)
+- [Jielun Cui](https://githubgit a.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Jielun-Cui.md)
