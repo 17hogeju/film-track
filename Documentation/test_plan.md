@@ -143,3 +143,17 @@ SR2.9 Integration
 | SR1 | Normal | Blackbox | Functional | Integration |
 | SR2 | Normal | Blackbox | Functional | Integration |
 
+## Test Case Results
+| Test Case | Result |
+| DB1 | Passed |
+| DB2 | Passed |
+| DB3 | Passed |
+| DB4 | Passed |
+| SQ1 | Passed |
+| FA1 | Passed |
+| FA2 | Passed |
+| AN1 | Passed |
+| RW1 | Passed |
+| MR1 | Passed |
+| SR1 | Passed |
+| SR2 | Passed |
