@@ -9,6 +9,6 @@ FilmTrack provides a simple system for tracking your media interests and identif
 This is a senior design project by University of Cincinnati seniors: Julia Hoge, Sidath Marapane, and Jielun Cui
 It is advised by Dr. Fred Annexstein
 
-*Table of Contents for documentation in [FilmTrack Wiki](https://github.com/17hogeju/film-track/wiki)*
+*Final design report in [FilmTrack Wiki](https://github.com/17hogeju/film-track/wiki)*
 
 
