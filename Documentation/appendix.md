@@ -45,4 +45,4 @@ _In hours_
 ### Professional Biographies
 - [Julia Hoge](https://github.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Julia-Hoge.md)
 - [Sidath Marapane](https://github.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Sidath-Marapane.md)
-- [Jielun Cui](https://githubgit a.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Jielun-Cui.md)
+- [Jielun Cui](https://github.com/17hogeju/film-track/blob/main/Documentation/professional_bio_Jielun-Cui.md)
