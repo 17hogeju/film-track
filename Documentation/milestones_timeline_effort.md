@@ -39,8 +39,8 @@
 | Implement algorithms - parse user input                                                   |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |   10/17    |11/21|    Yes    |
 | Implement To-Watch List                                                                   |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |    11/7    |11/21|    Yes    |
 | Implement Recommendations - add to to-watch list                                          |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80%:|   11/23    |12/23|    Yes    |
-| ~~Implement Recommendations - user feedback~~                                             |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |   11/23    |12/23|    Yes    |
-| ~~Implement Recommendations - notifications~~                                             |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |   11/23    |12/23|    Yes    |
+| ~~Implement Recommendations - user feedback~~                                             |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |   11/23    |12/23|        |
+| ~~Implement Recommendations - notifications~~                                             |Jielun|Julia: 10%, Sidath: 10%, Jielun: 80% |   11/23    |12/23|        |
 | ~~Implement Optimal Combo of Subscriptions - modify current subscriptions~~               |Sidath|Julia: 10%, Sidath: 80%, Jielun: 10% |   11/27    |12/23|           |
 | Implement Optimal Combo of Subscriptions - display best combo                             |Sidath|Julia: 10%, Sidath: 80%, Jielun: 10% |   11/27    |12/23|    Yes    |
 | Completed Implementation of UI screens                                                    |||10/22|12/23|    Yes     |
